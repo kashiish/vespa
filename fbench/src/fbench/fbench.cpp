@@ -49,6 +49,7 @@ FBench::FBench()
       _maxLineSize(0),
       _keepAlive(true),
       _usePostMode(false),
+      _useGrpcMode(false),
       _headerBenchmarkdataCoverage(false),
       _seconds(60),
       _singleQueryFile(false)
@@ -115,7 +116,7 @@ FBench::InitBenchmark(int numClients, int ignoreCount, int cycle,
                       bool keepAlive, bool base64Decode,
                       bool headerBenchmarkdataCoverage, int seconds,
                       bool singleQueryFile, const std::string & queryStringToAppend, const std::string & extraHeaders,
-                      const std::string &authority, bool postMode)
+                      const std::string &authority, bool postMode, bool grpcMode)
 {
     _clients.resize(numClients);
     _ignoreCount     = ignoreCount;
@@ -135,11 +136,32 @@ FBench::InitBenchmark(int numClients, int ignoreCount, int cycle,
     _keepAlive       = keepAlive;
     _base64Decode    = base64Decode;
     _usePostMode     = postMode;
+    _useGrpcMode     = grpcMode;
     _headerBenchmarkdataCoverage = headerBenchmarkdataCoverage;
     _seconds = seconds;
     _singleQueryFile = singleQueryFile;
 }
 
+void
+FBench::InitGrpcBenchmark(int numClients, int ignoreCount, int cycle, 
+                           const char *datasetFilename, const char *outputPattern,
+                           int byteLimit, int restartLimit, int seconds, 
+                           bool grpcMode)
+{
+    _clients.resize(numClients);
+    _ignoreCount     = ignoreCount;
+    _cycle           = cycle;
+
+    free(_filenamePattern);
+    _filenamePattern = strdup(datasetFilename);
+    free(_outputPattern);
+    _outputPattern   = (outputPattern == NULL) ?
+                       NULL : strdup(outputPattern);
+    _byteLimit       = byteLimit;
+    _restartLimit    = restartLimit;
+    _useGrpcMode     = grpcMode;
+    _seconds = seconds;
+}
 void
 FBench::CreateClients()
 {
@@ -162,7 +184,21 @@ FBench::CreateClients()
                                 _keepAlive, _base64Decode,
                                 _headerBenchmarkdataCoverage,
                                 off_beg, off_end,
-                                _singleQueryFile, _queryStringToAppend, _extraHeaders, _authority, _usePostMode));
+                                _singleQueryFile, _queryStringToAppend, _extraHeaders, _authority, _usePostMode, _useGrpcMode));
+        ++i;
+    }
+}
+
+void
+FBench::CreateGrpcClients() {
+    int spread = (_cycle > 1) ? _cycle : 1;
+
+    int i(0);
+    for(auto & client : _clients) {
+        client = std::make_unique<Client>(new GrpcClientArguments(i, _clients.size(), _filenamePattern,
+                                _outputPattern, _cycle,
+                                random() % spread, _ignoreCount,
+                                _byteLimit, _restartLimit, _usePostMode, _useGrpcMode));
         ++i;
     }
 }
@@ -358,6 +394,7 @@ FBench::Main(int argc, char *argv[])
     bool base64Decode = false;
     bool headerBenchmarkdataCoverage = false;
     bool usePostMode = false;
+    bool useGrpcMode = false;
 
     bool singleQueryFile = false;
     std::string authority;
@@ -372,7 +409,7 @@ FBench::Main(int argc, char *argv[])
 
     idx = 1;
     optError = false;
-    while((opt = GetOpt(argc, argv, "H:A:T:C:K:Da:n:c:l:i:s:q:o:r:m:p:kdxyzP", arg, idx)) != -1) {
+    while((opt = GetOpt(argc, argv, "H:A:T:C:K:Da:n:c:l:i:s:q:o:r:m:p:kdxyzPG", arg, idx)) != -1) {
         switch(opt) {
         case 'A':
             authority = arg;
@@ -430,7 +467,14 @@ FBench::Main(int argc, char *argv[])
             }
             break;
         case 'P':
-            usePostMode = true;
+            if(!useGrpcMode) {
+                usePostMode = true;
+            }
+            break;
+        case 'G':
+            if(!usePostMode) {
+                useGrpcMode = true;
+            }
             break;
         case 'p':
             printInterval = atoi(arg);
@@ -463,79 +507,92 @@ FBench::Main(int argc, char *argv[])
         Usage();
         return -1;
     }
-    // Hostname/port must be in pair
-    int args = (argc - idx);
-    if (args % 2 != 0) {
-        fprintf(stderr, "Not equal number of hostnames and ports\n");
-        return -1;
-    }
 
-    if (!init_crypto_engine(ca_certs_file_name, cert_chain_file_name, private_key_file_name, allow_default_tls)) {
-        fprintf(stderr, "failed to initialize crypto engine\n");
-        return -1;
-    }
+    if(useGrpcMode) {
+        InitGrpcBenchmark(numClients, ignoreCount, cycleTime, 
+                           queryFilePattern, outputFilePattern,
+                           byteLimit, restartLimit, seconds, 
+                           useGrpcMode);
 
-    short hosts = args / 2;
+        CreateGrpcClients();
 
-    for (int i=0; i<hosts; ++i)
-    {
-        _hostnames.push_back(std::string(argv[idx+2*i]));
-        int port = atoi(argv[idx+2*i+1]);
-        if (port == 0) {
-            fprintf(stderr, "Not a valid port:\t%s\n", argv[idx+2*i+1]);
-            return -1;
-        }
-        _ports.push_back(port);
-    }
+    } else {
 
-    // Find offset for each client if shared query file
-    _queryfileOffset.push_back(0);
-    if (singleQueryFile) {
-        // Open file to find offsets, with pattern as if client 0
-        char filename[1024];
-        snprintf(filename, 1024, queryFilePattern, 0);
-        queryFilePattern = filename;
-        FileReader reader;
-        if (!reader.Open(queryFilePattern)) {
-            fprintf(stderr, "ERROR: could not open file '%s' [read mode]\n",
-                    queryFilePattern);
+        // Hostname/port must be in pair
+        int args = (argc - idx);
+        if (args % 2 != 0) {
+            fprintf(stderr, "Not equal number of hostnames and ports\n");
             return -1;
         }
 
-        uint64_t totalSize = reader.GetFileSize();
-        uint64_t perClient = totalSize / numClients;
-
-        for (int i=1; i<numClients; ++i) {
-            /** Start each client with some offset, adjusted to next newline
-             **/
-            FileReader r;
-            r.Open(queryFilePattern);
-            uint64_t clientOffset = std::max(i*perClient, _queryfileOffset.back() );
-            uint64_t newline = r.FindNextLine(clientOffset);
-            _queryfileOffset.push_back(newline);
+        if (!init_crypto_engine(ca_certs_file_name, cert_chain_file_name, private_key_file_name, allow_default_tls)) {
+            fprintf(stderr, "failed to initialize crypto engine\n");
+            return -1;
         }
 
-        // Add pos to end of file
-        _queryfileOffset.push_back(totalSize);
+        short hosts = args / 2;
+
+        for (int i=0; i<hosts; ++i)
+        {
+            _hostnames.push_back(std::string(argv[idx+2*i]));
+            int port = atoi(argv[idx+2*i+1]);
+            if (port == 0) {
+                fprintf(stderr, "Not a valid port:\t%s\n", argv[idx+2*i+1]);
+                return -1;
+            }
+            _ports.push_back(port);
+        }
+
+        // Find offset for each client if shared query file
+        _queryfileOffset.push_back(0);
+        if (singleQueryFile) {
+            // Open file to find offsets, with pattern as if client 0
+            char filename[1024];
+            snprintf(filename, 1024, queryFilePattern, 0);
+            queryFilePattern = filename;
+            FileReader reader;
+            if (!reader.Open(queryFilePattern)) {
+                fprintf(stderr, "ERROR: could not open file '%s' [read mode]\n",
+                        queryFilePattern);
+                return -1;
+            }
+
+            uint64_t totalSize = reader.GetFileSize();
+            uint64_t perClient = totalSize / numClients;
+
+            for (int i=1; i<numClients; ++i) {
+                /** Start each client with some offset, adjusted to next newline
+                 **/
+                FileReader r;
+                r.Open(queryFilePattern);
+                uint64_t clientOffset = std::max(i*perClient, _queryfileOffset.back() );
+                uint64_t newline = r.FindNextLine(clientOffset);
+                _queryfileOffset.push_back(newline);
+            }
+
+            // Add pos to end of file
+            _queryfileOffset.push_back(totalSize);
 
 
-        // Print offset of clients
-        /*
-          printf("%6s%14s%15s", "Client", "Offset", "Bytes\n");
-          for (unsigned int i =0; i< _queryfileOffset.size()-1; ++i)
-          printf("%6d%14ld%14ld\n", i, _queryfileOffset[i], _queryfileOffset[i+1]-_queryfileOffset[i]);
-        */
+            // Print offset of clients
+            /*
+            printf("%6s%14s%15s", "Client", "Offset", "Bytes\n");
+            for (unsigned int i =0; i< _queryfileOffset.size()-1; ++i)
+            printf("%6d%14ld%14ld\n", i, _queryfileOffset[i], _queryfileOffset[i+1]-_queryfileOffset[i]);
+            */
+        }
+
+        InitBenchmark(numClients, ignoreCount, cycleTime,
+                    queryFilePattern, outputFilePattern,
+                    byteLimit, restartLimit, maxLineSize,
+                    keepAlive, base64Decode,
+                    headerBenchmarkdataCoverage, seconds,
+                    singleQueryFile, queryStringToAppend, extraHeaders,
+                    authority, usePostMode, useGrpcMode);
+
+        CreateClients();
     }
 
-    InitBenchmark(numClients, ignoreCount, cycleTime,
-                  queryFilePattern, outputFilePattern,
-                  byteLimit, restartLimit, maxLineSize,
-                  keepAlive, base64Decode,
-                  headerBenchmarkdataCoverage, seconds,
-                  singleQueryFile, queryStringToAppend, extraHeaders,
-                  authority, usePostMode);
-
-    CreateClients();
     StartClients();
 
     if (seconds < 0) {

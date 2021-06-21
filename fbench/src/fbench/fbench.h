@@ -25,6 +25,7 @@ private:
     bool                _keepAlive;
     bool                _base64Decode;
     bool                _usePostMode;
+    bool                _useGrpcMode;
     bool                _headerBenchmarkdataCoverage;
     int                 _seconds;
     std::vector<uint64_t> _queryfileOffset;
@@ -45,9 +46,14 @@ private:
                        bool keepAlive, bool base64Decode,
                        bool headerBenchmarkdataCoverage, int seconds,
                        bool singleQueryFile, const std::string & queryStringToAppend, const std::string & extraHeaders,
-                       const std::string &authority, bool postMode);
+                       const std::string &authority, bool postMode, bool grpcMode);
 
+    void InitGrpcBenchmark(int numClients, int ignoreCount, int cycle, 
+                           const char *datasetFilename, const char *outputPattern,
+                           int byteLimit, int restartLimit, int seconds, 
+                           bool grpcMode);
     void CreateClients();
+    void CreateGrpcClients();
     void StartClients();
     void StopClients();
     bool ClientsDone();
