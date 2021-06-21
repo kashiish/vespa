@@ -33,6 +33,23 @@ Client::Client(vespalib::CryptoEngine::SP engine, ClientArguments *args)
     _cycleTimer->SetMax(_args->_cycle);
 }
 
+Client::Client(GrpcClientArguments *args)
+    : _grpcArgs(args),
+      _status(new ClientStatus()),
+      _reqTimer(new Timer()),
+      _cycleTimer(new Timer()),
+      _masterTimer(new Timer()),
+      _reader(new FileReader()),
+      _output(),
+      _linebuf(new char[_linebufsize]),
+      _stop(false),
+      _done(false),
+      _thread()
+{
+    assert(args != NULL);
+    _cycleTimer->SetMax(_args->_cycle);
+}
+
 Client::~Client()
 {
     delete [] _linebuf;
