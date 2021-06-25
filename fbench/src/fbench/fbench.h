@@ -26,6 +26,8 @@ private:
     bool                _base64Decode;
     bool                _usePostMode;
     bool                _useGrpcMode;
+    char                *_deployedIndexServerIp;
+    char                *_deployedIndexId;
     bool                _headerBenchmarkdataCoverage;
     int                 _seconds;
     std::vector<uint64_t> _queryfileOffset;
@@ -50,8 +52,7 @@ private:
 
     void InitGrpcBenchmark(int numClients, int ignoreCount, int cycle, 
                            const char *datasetFilename, const char *outputPattern,
-                           int byteLimit, int restartLimit, int seconds, 
-                           bool grpcMode);
+                           int byteLimit, int restartLimit, int seconds, bool grpcMode);
     void CreateClients();
     void CreateGrpcClients();
     void StartClients();

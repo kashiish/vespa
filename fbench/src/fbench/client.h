@@ -8,6 +8,12 @@
 
 #define FBENCH_DELIMITER "\n[--xxyyzz--FBENCH_MAGIC_DELIMITER--zzyyxx--]\n"
 
+
+/**
+ * This struct contains basic arguments used to control a single client.
+ * Each client runs in a separate thread. This struct does not own the
+ * strings it references.
+**/
 struct BaseClientArguments
 {
     public:
@@ -188,88 +194,30 @@ private:
  * Each client runs in a separate thread. This struct do not own the
  * strings it references.
  **/
-struct GrpcClientArguments
+struct GrpcClientArguments : BaseClientArguments
 {
     /**
-     * Sequential number identifying this client.
+     * The IP address of the server that contains the index we are searching in.
      **/
-    int         _myNum;
+    const char *_deployedIndexServerIp;
 
     /**
-     * The total number of clients controlled by the parent fbench
-     * application
+     * The id of the index we are searching in.
      **/
-    int         _totNum;
-
-    /**
-     * The name of the HDF5 file containing test data vectors.
-     **/
-    const char *_datasetFilename;
-
-    /**
-     * Pattern that combined with the client number will become the name
-     * of the file this client should dump url content to. If this
-     * pattern is set to NULL no output file is generated.
-     **/
-    const char *_outputPattern;
-
-    /**
-     * The minimum number of milliseconds between two requests from this
-     * client.
-     **/
-    long        _cycle;
-
-    /**
-     * Number of milliseconds to wait before making the first request.
-     * This will be different for different clients and helps distribute
-     * the requests.
-     **/
-    long        _delay;
-
-    /**
-     * Number of requests that should be made before we start logging
-     * response times. This is included so fbench startup slugginess
-     * will not affect the benchmark results.
-     **/
-    int         _ignoreCount;
-
-    /**
-     * Minimum number of bytes allowed in a response for a request to be
-     * successful. If a response contains fewer bytes than this number,
-     * the request will be logged as a failure even if no errors
-     * occurred.
-     **/
-    int         _byteLimit;
-
-    /**
-     * Number of times this client is allowed to re-use the urls in the
-     * input query file.
-     **/
-    int         _restartLimit;
-
-    /** Whether we should use POST in requests */
-    bool        _usePostMode;
-
-    /** Whether we should use gRPC to make requests */
-    bool        _useGrpcMode;
+    const char *_deployedIndexId;
 
     GrpcClientArguments(int myNum, int totNum,
-                    const char *datasetFilename,
+                    const char *filenamePattern,
                     const char *outputPattern,
                     long cycle, long delay,
                     int ignoreCount, int byteLimit,
-                    int restartLimit, bool postMode, bool grpcMode)
-        : _myNum(myNum),
-          _totNum(totNum),
-          _datasetFilename(datasetFilename),
-          _outputPattern(outputPattern),
-          _cycle(cycle),
-          _delay(delay),
-          _ignoreCount(ignoreCount),
-          _byteLimit(byteLimit),
-          _restartLimit(restartLimit),
-          _usePostMode(postMode),
-          _useGrpcMode(grpcMode)
+                    int restartLimit, const char *deployedIndexServerIp, 
+                    const char *deployedIndexId, bool postMode, bool grpcMode)
+        :  BaseClientArguments(myNum, totNum, filenamePattern,
+        outputPattern, cycle, delay, ignoreCount, byteLimit, 
+        restartLimit, postMode, grpcMode),
+        _deployedIndexServerIp(deployedIndexServerIp),
+        _deployedIndexId(deployedIndexId)
     {
     }
 
@@ -277,7 +225,6 @@ private:
     GrpcClientArguments(const GrpcClientArguments &);
     GrpcClientArguments &operator=(const GrpcClientArguments &);
 };
-
 
 class Timer;
 class HTTPClient;

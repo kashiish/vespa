@@ -198,7 +198,8 @@ FBench::CreateGrpcClients() {
         client = std::make_unique<Client>(new GrpcClientArguments(i, _clients.size(), _filenamePattern,
                                 _outputPattern, _cycle,
                                 random() % spread, _ignoreCount,
-                                _byteLimit, _restartLimit, _usePostMode, _useGrpcMode));
+                                _byteLimit, _restartLimit, _deployedIndexServerIp, 
+                                _deployedIndexId, _usePostMode, _useGrpcMode));
         ++i;
     }
 }
@@ -326,10 +327,11 @@ FBench::Usage()
 {
     printf("usage: vespa-fbench [-H extraHeader] [-a queryStringToAppend ] [-n numClients] [-c cycleTime] [-l limit] [-i ignoreCount]\n");
     printf("              [-s seconds] [-q queryFilePattern] [-o outputFilePattern]\n");
-    printf("              [-r restartLimit] [-m maxLineSize] [-k] <hostname> <port>\n\n");
+    printf("              [-r restartLimit] [-m maxLineSize] [-k] (<hostname> <port>) or (<indexServerIp> <indexId>)\n\n");
     printf(" -H <str> : append extra header to each get request.\n");
     printf(" -A <str> : assign authority.  <str> should be hostname:port format. Overrides Host: header sent.\n");
     printf(" -P       : use POST for requests instead of GET.\n");
+    printf(" -G       : use gRPC for requests instead of HTTP (Haystack)\n");
     printf(" -a <str> : append string to each query\n");
     printf(" -n <num> : run with <num> parallel clients [10]\n");
     printf(" -c <num> : each client will make a request each <num> milliseconds [1000]\n");
@@ -355,6 +357,9 @@ FBench::Usage()
     printf(" -D       : use TLS configuration from environment if T/C/K is not used\n\n");
     printf(" <hostname> : the host you want to benchmark.\n");
     printf(" <port>     : the port to use when contacting the host.\n\n");
+    printf(" <indexServerIp> : the IP address of the server that contains the deployed index you want to benchmark.\n");
+    printf(" <indexId> : the ID of the deployed index you want to use for benchmarking.\n\n");
+    printf("If using Haystack, please use gRPC mode and input the indexServerIp and indexId instead of hostname and port.\n");
     printf("Several hostnames and ports can be listed\n");
     printf("This is distributed in round-robin manner to clients\n");
 }
@@ -430,6 +435,7 @@ FBench::Main(int argc, char *argv[])
         case 'K':
             private_key_file_name = std::string(arg);
             break;
+        
         case 'D':
             allow_default_tls = true;
             break;
@@ -509,6 +515,16 @@ FBench::Main(int argc, char *argv[])
     }
 
     if(useGrpcMode) {
+        
+        int args = (argc - idx);
+        if(args < 2) {
+            fprintf(stderr, "Index server IP address and/or index ID missing.\n");
+            return -1;
+        }
+
+        _deployedIndexServerIp = argv[idx];
+        _deployedIndexId = argv[idx+1];
+
         InitGrpcBenchmark(numClients, ignoreCount, cycleTime, 
                            queryFilePattern, outputFilePattern,
                            byteLimit, restartLimit, seconds, 
