@@ -35,6 +35,14 @@ find_package(GTest REQUIRED)
 set(PYBIND11_FIND_PYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
 
+find_package(Protobuf REQUIRED)
+
+
+find_package(gRPC CONFIG REQUIRED)
+message(STATUS "Using gRPC ${gRPC_VERSION}")
+set(_GRPC_GRPCPP gRPC::grpc++)
+set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
+
 include(build_settings.cmake)
 
 # Enable CTest unit testing

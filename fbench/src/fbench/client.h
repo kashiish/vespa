@@ -228,6 +228,7 @@ private:
 
 class Timer;
 class HTTPClient;
+class GrpcClient;
 class FileReader;
 struct ClientStatus;
 
@@ -248,6 +249,7 @@ private:
     std::unique_ptr<Timer>           _cycleTimer;
     std::unique_ptr<Timer>           _masterTimer;
     std::unique_ptr<HTTPClient>      _http;
+    std::unique_ptr<GrpcClient>      _grpc;
     std::unique_ptr<FileReader>      _reader;
     std::unique_ptr<std::ofstream>   _output;
     int                              _linebufsize;

@@ -25,7 +25,7 @@ set(RUN_BENCHMARKS FALSE CACHE BOOL "If TRUE, benchmarks are run together with t
 set(AUTORUN_UNIT_TESTS FALSE CACHE BOOL "If TRUE, tests will be run immediately after linking the test executable")
 
 # Warnings
-set(C_WARN_OPTS "-Wuninitialized -Werror -Wall -W -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings")
+set(C_WARN_OPTS "-Wuninitialized -Wall -W -Wchar-subscripts -Wcomment -Wformat -Wparentheses -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings")
 if (VESPA_USE_SANITIZER)
     # Instrumenting code changes binary size, which triggers inlining warnings that
     # don't happen during normal, non-instrumented compilation.
@@ -37,7 +37,7 @@ endif()
 # Note: this is not a union of C_WARN_OPTS, since CMAKE_CXX_FLAGS already includes CMAKE_C_FLAGS, which in turn includes C_WARN_OPTS transitively
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
   set(CXX_SPECIFIC_WARN_OPTS "-Wnon-virtual-dtor -Wformat-security -Wno-overloaded-virtual")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-delete-null-pointer-checks -fsized-deallocation")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-delete-null-pointer-checks -fsized-deallocation -I/usr/local/include")
   if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
     set(VESPA_ATOMIC_LIB "")
     set(VESPA_GCC_LIB "")
@@ -88,9 +88,9 @@ endif()
 # Linker flags
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
   if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -ldl")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -ldl -L/usr/local/lib")
   else()
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -latomic -ldl")
+    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -latomic -ldl -L/usr/local/lib")
   endif()
 else()
   if(VESPA_ATOMIC_LIB STREQUAL "")

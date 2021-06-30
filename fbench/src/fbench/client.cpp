@@ -4,6 +4,7 @@
 #include <util/timer.h>
 #include <util/clientstatus.h>
 #include <httpclient/httpclient.h>
+#include <grpcclient/grpcclient.h>
 #include <util/filereader.h>
 #include <cassert>
 #include <cstring>
@@ -39,6 +40,7 @@ Client::Client(GrpcClientArguments *args)
       _reqTimer(new Timer()),
       _cycleTimer(new Timer()),
       _masterTimer(new Timer()),
+      _grpc(new GrpcClient(_grpcArgs->_deployedIndexServerIp, _grpcArgs->_deployedIndexId)),
       _reader(new FileReader()),
       _output(),
       _linebuf(new char[_linebufsize]),
@@ -46,8 +48,12 @@ Client::Client(GrpcClientArguments *args)
       _done(false),
       _thread()
 {
+    printf("inside client with grpc args\n");
+
     assert(args != NULL);
-    _cycleTimer->SetMax(_args->_cycle);
+    printf("args not null \n");
+    _cycleTimer->SetMax(_grpcArgs->_cycle);
+    printf("done creating client\n");
 }
 
 Client::~Client()
@@ -187,8 +193,17 @@ Client::run()
     int  linelen;
     ///   int  reslen;
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(_args->_delay));
 
+
+    if(_args == NULL) {
+            _masterTimer->Stop();
+    printf(".");
+    fflush(stdout);
+    _done = true;
+    printf("end run\n");
+        return;
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(_args->_delay));
     // open query file
     snprintf(inputFilename, 1024, _args->_filenamePattern, _args->_myNum);
     if (!_reader->Open(inputFilename)) {
@@ -320,7 +335,9 @@ bool Client::done() {
 }
 
 void Client::start() {
+    printf("inside client start\n");
     _thread = std::thread(Client::runMe, this);
+    printf("client started\n");
 }
 
 void Client::join() {

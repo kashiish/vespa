@@ -12,7 +12,8 @@ vespa_define_module(
     src/splitfile
     src/util
     src/httpclient
-
+    src/grpcclient
+    
     TESTS
     src/test
     src/test/authority

@@ -1,6 +1,7 @@
 // Copyright 2017 Yahoo Holdings. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root.
 #include <util/timer.h>
 #include <httpclient/httpclient.h>
+#include <grpcclient/grpcclient.h>
 #include <util/filereader.h>
 #include <util/clientstatus.h>
 #include <vespa/vespalib/crypto/crypto_exception.h>
@@ -148,19 +149,29 @@ FBench::InitGrpcBenchmark(int numClients, int ignoreCount, int cycle,
                            int byteLimit, int restartLimit, int seconds, 
                            bool grpcMode)
 {
+            printf("inside init grpc benchmark\n");
+
     _clients.resize(numClients);
     _ignoreCount     = ignoreCount;
     _cycle           = cycle;
-
+    printf("before free\n");
     free(_filenamePattern);
+    printf("after free\n");
     _filenamePattern = strdup(datasetFilename);
+    printf("file name pattern\n");
     free(_outputPattern);
+    printf("free output\n");
+
     _outputPattern   = (outputPattern == NULL) ?
                        NULL : strdup(outputPattern);
+
+            printf("output file\n");
+
     _byteLimit       = byteLimit;
     _restartLimit    = restartLimit;
     _useGrpcMode     = grpcMode;
     _seconds = seconds;
+    printf("done init\n");
 }
 void
 FBench::CreateClients()
@@ -192,14 +203,18 @@ FBench::CreateClients()
 void
 FBench::CreateGrpcClients() {
     int spread = (_cycle > 1) ? _cycle : 1;
+                printf("inside create\n");
 
     int i(0);
     for(auto & client : _clients) {
+                printf("inside for loop\n");
+
         client = std::make_unique<Client>(new GrpcClientArguments(i, _clients.size(), _filenamePattern,
                                 _outputPattern, _cycle,
                                 random() % spread, _ignoreCount,
                                 _byteLimit, _restartLimit, _deployedIndexServerIp, 
                                 _deployedIndexId, _usePostMode, _useGrpcMode));
+        printf("after create client loop \n");
         ++i;
     }
 }
@@ -478,6 +493,7 @@ FBench::Main(int argc, char *argv[])
             }
             break;
         case 'G':
+            printf("use grpc \n");
             if(!usePostMode) {
                 useGrpcMode = true;
             }
@@ -515,15 +531,19 @@ FBench::Main(int argc, char *argv[])
     }
 
     if(useGrpcMode) {
-        
+        printf("if statament \n");
         int args = (argc - idx);
+        printf("args\n");
         if(args < 2) {
             fprintf(stderr, "Index server IP address and/or index ID missing.\n");
             return -1;
         }
 
         _deployedIndexServerIp = argv[idx];
+        printf("got deployed server ip\n");
         _deployedIndexId = argv[idx+1];
+        printf("got deployed index id\n");
+
 
         InitGrpcBenchmark(numClients, ignoreCount, cycleTime, 
                            queryFilePattern, outputFilePattern,
@@ -531,6 +551,8 @@ FBench::Main(int argc, char *argv[])
                            useGrpcMode);
 
         CreateGrpcClients();
+                printf("after create clients\n");
+
 
     } else {
 
@@ -608,8 +630,11 @@ FBench::Main(int argc, char *argv[])
 
         CreateClients();
     }
+            printf("before start clients\n");
 
     StartClients();
+            printf("after start clients\n");
+
 
     if (seconds < 0) {
         unsigned int secondCount = 0;
@@ -626,10 +651,12 @@ FBench::Main(int argc, char *argv[])
         }
     } else if (seconds > 0) {
         // Timer to compansate for work load on PrintSummary()
+        printf("inside seconds if\n");
         Timer sleepTimer;
         sleepTimer.SetMax(1000);
 
         for (;seconds > 0 && !ClientsDone(); seconds--) {
+            printf("inside second if for loop\n");
             if (exitSignal) {
                 _seconds = _seconds - seconds;
                 Exit();
@@ -647,11 +674,16 @@ FBench::Main(int argc, char *argv[])
             }
 
             sleepTimer.Stop();
+            printf("end seconds if");
         }
     }
 
+            printf("before stop\n");
+
     StopClients();
-    PrintSummary();
+            printf("after stop\n");
+
+   // PrintSummary();
     return 0;
 }
 
