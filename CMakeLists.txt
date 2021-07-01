@@ -37,12 +37,6 @@ find_package(pybind11 CONFIG REQUIRED)
 
 find_package(Protobuf REQUIRED)
 
-
-find_package(gRPC CONFIG REQUIRED)
-message(STATUS "Using gRPC ${gRPC_VERSION}")
-set(_GRPC_GRPCPP gRPC::grpc++)
-set(_GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
-
 include(build_settings.cmake)
 
 # Enable CTest unit testing
@@ -97,6 +91,7 @@ add_subdirectory(filedistribution)
 add_subdirectory(flags)
 add_subdirectory(fnet)
 add_subdirectory(fsa)
+add_subdirectory(grpc)
 add_subdirectory(hosted-zone-api)
 add_subdirectory(jdisc-cloud-aws)
 add_subdirectory(jdisc_core)

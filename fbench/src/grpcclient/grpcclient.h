@@ -1,10 +1,7 @@
 #pragma once
 
 #include <ostream>
-#include "third_party/googleapis/match_service.grpc.pb.h"
-#include "third_party/googleapis/match_service.pb.h"
-#include <grpcpp/grpcpp.h>
-#include <grpc/grpc.h>
+#include "match_service.grpc.pb.h"
 
 
 /**
@@ -34,7 +31,7 @@ protected:
   unsigned int          _dataRead;      // total bytes read from URL
   bool                  _dataDone;      // all URL content read ?
 
-  ::google::cloud::aiplatform::container::v1beta1::MatchService::Stub    *stub;              
+  // ::google::cloud::aiplatform::container::v1beta1::MatchService::Stub    *stub;              
 
   /**
    * Discard all data currently present in the internal buffer.
@@ -70,13 +67,7 @@ protected:
    *
    * @return success(true)/failure(false)
    **/
-  bool Connect()
-  {
-    printf("in connect\n");
-    const std::shared_ptr< ::grpc::ChannelInterface>& channel = grpc::CreateChannel(_deployedIndexServerIp, grpc::InsecureChannelCredentials());
-    stub = new google::cloud::aiplatform::container::v1beta1::MatchService::Stub(channel);
-    return true;
-  }
+  bool Connect();
 
 //   /**
 //    * Read the next line of text from the data stream into 'buf'. If

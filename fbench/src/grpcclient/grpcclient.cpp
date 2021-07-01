@@ -1,11 +1,24 @@
  // Copyright 2017 Yahoo Holdings. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root.
 #include "grpcclient.h"
-#include "third_party/googleapis/match_service.grpc.pb.h"
-#include "third_party/googleapis/match_service.pb.h"
 #include <vespa/vespalib/util/size_literals.h>
 #include <cassert>
 #include <cstring>
+#include <grpcpp/grpcpp.h>
+#include <grpc++/grpc++.h>
 #include <grpc/grpc.h>
+#include <grpcpp/channel.h>
+#include <grpcpp/client_context.h>
+#include <grpcpp/create_channel.h>
+#include <grpcpp/security/credentials.h>
+
+
+using grpc::Channel;
+using grpc::ClientContext;
+using grpc::ClientReader;
+using grpc::ClientReaderWriter;
+using grpc::ClientWriter;
+using grpc::Status;
+using grpc::InsecureChannelCredentials;
 
 #define FETCH_BUFLEN 5120
 #define FIXED_REQ_MAX 25
@@ -24,7 +37,7 @@ GrpcClient::GrpcClient(const char *deployedIndexServerIp, const char *deployedIn
     _dataRead(0),
     _dataDone(false)
 {
-   GrpcClient::Connect();
+   Connect();
 }
 
 ssize_t
@@ -33,6 +46,15 @@ GrpcClient::FillBuffer() {
     // _bufpos  = 0;
     return _bufused;
 }
+
+bool 
+GrpcClient::Connect()
+  {
+    printf("in connect\n");
+    const std::shared_ptr<Channel> channel = grpc::CreateChannel(_deployedIndexServerIp, grpc::InsecureChannelCredentials());
+    // stub = new google::cloud::aiplatform::container::v1beta1::MatchService::Stub(channel);
+    return true;
+  }
 
 // ssize_t
 // HTTPClient::ContentLengthReader::Read(HTTPClient &client,
