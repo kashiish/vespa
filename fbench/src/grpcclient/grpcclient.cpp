@@ -3,22 +3,18 @@
 #include <vespa/vespalib/util/size_literals.h>
 #include <cassert>
 #include <cstring>
-#include <grpcpp/grpcpp.h>
-#include <grpc++/grpc++.h>
-#include <grpc/grpc.h>
-#include <grpcpp/channel.h>
-#include <grpcpp/client_context.h>
-#include <grpcpp/create_channel.h>
-#include <grpcpp/security/credentials.h>
+
+//#include <grpc++/grpc++.h>
+// #include <grpc/grpc.h>
 
 
-using grpc::Channel;
-using grpc::ClientContext;
-using grpc::ClientReader;
-using grpc::ClientReaderWriter;
-using grpc::ClientWriter;
-using grpc::Status;
-using grpc::InsecureChannelCredentials;
+// using grpc::Channel;
+// using grpc::ClientContext;
+// using grpc::ClientReader;
+// using grpc::ClientReaderWriter;
+// using grpc::ClientWriter;
+// using grpc::Status;
+// using grpc::InsecureChannelCredentials;
 
 #define FETCH_BUFLEN 5120
 #define FIXED_REQ_MAX 25
@@ -51,7 +47,8 @@ bool
 GrpcClient::Connect()
   {
     printf("in connect\n");
-    const std::shared_ptr<Channel> channel = grpc::CreateChannel(_deployedIndexServerIp, grpc::InsecureChannelCredentials());
+
+    const std::shared_ptr<grpc::Channel> channel (grpc::CreateChannel(_deployedIndexServerIp, grpc::InsecureChannelCredentials()));
     // stub = new google::cloud::aiplatform::container::v1beta1::MatchService::Stub(channel);
     return true;
   }

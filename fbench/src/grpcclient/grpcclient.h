@@ -2,6 +2,8 @@
 
 #include <ostream>
 #include "match_service.grpc.pb.h"
+#include <grpcpp/grpcpp.h>
+
 
 
 /**
@@ -31,7 +33,7 @@ protected:
   unsigned int          _dataRead;      // total bytes read from URL
   bool                  _dataDone;      // all URL content read ?
 
-  // ::google::cloud::aiplatform::container::v1beta1::MatchService::Stub    *stub;              
+  ::google::cloud::aiplatform::container::v1beta1::MatchService::Stub    *stub;              
 
   /**
    * Discard all data currently present in the internal buffer.
