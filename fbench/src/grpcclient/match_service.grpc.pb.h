@@ -7,7 +7,6 @@
 #include "match_service.pb.h"
 
 #include <functional>
-#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
@@ -60,33 +59,21 @@ class MatchService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>> PrepareAsyncBatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>>(PrepareAsyncBatchMatchRaw(context, request, cq));
     }
-    class experimental_async_interface {
+    class async_interface {
      public:
-      virtual ~experimental_async_interface() {}
+      virtual ~async_interface() {}
       // Returns the nearest neighbors for the query. If it is a sharded
       // deployment, calls the other shards and aggregates the responses.
       virtual void Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
       // Returns the nearest neighbors for batch queries. If it is a sharded
       // deployment, calls the other shards and aggregates the responses.
       virtual void BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, std::function<void(::grpc::Status)>) = 0;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      #else
-      virtual void BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      #endif
     };
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    typedef class experimental_async_interface async_interface;
-    #endif
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-    async_interface* async() { return experimental_async(); }
-    #endif
-    virtual class experimental_async_interface* experimental_async() { return nullptr; }
+    typedef class async_interface experimental_async_interface;
+    virtual class async_interface* async() { return nullptr; }
+    class async_interface* experimental_async() { return async(); }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::cloud::aiplatform::container::v1beta1::MatchResponse>* AsyncMatchRaw(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::cloud::aiplatform::container::v1beta1::MatchResponse>* PrepareAsyncMatchRaw(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -110,32 +97,24 @@ class MatchService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>> PrepareAsyncBatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>>(PrepareAsyncBatchMatchRaw(context, request, cq));
     }
-    class experimental_async final :
-      public StubInterface::experimental_async_interface {
+    class async final :
+      public StubInterface::async_interface {
      public:
       void Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
       void BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, std::function<void(::grpc::Status)>) override;
-      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      #else
-      void BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      #endif
      private:
       friend class Stub;
-      explicit experimental_async(Stub* stub): stub_(stub) { }
+      explicit async(Stub* stub): stub_(stub) { }
       Stub* stub() { return stub_; }
       Stub* stub_;
     };
-    class experimental_async_interface* experimental_async() override { return &async_stub_; }
+    class async* async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class experimental_async async_stub_{this};
+    class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::google::cloud::aiplatform::container::v1beta1::MatchResponse>* AsyncMatchRaw(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::cloud::aiplatform::container::v1beta1::MatchResponse>* PrepareAsyncMatchRaw(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>* AsyncBatchMatchRaw(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -198,36 +177,22 @@ class MatchService final {
   };
   typedef WithAsyncMethod_Match<WithAsyncMethod_BatchMatch<Service > > AsyncService;
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_Match : public BaseClass {
+  class WithCallbackMethod_Match : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_Match() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(0,
+    WithCallbackMethod_Match() {
+      ::grpc::Service::MarkMethodCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::google::cloud::aiplatform::container::v1beta1::MatchRequest, ::google::cloud::aiplatform::container::v1beta1::MatchResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response) { return this->Match(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response) { return this->Match(context, request, response); }));}
     void SetMessageAllocatorFor_Match(
-        ::grpc::experimental::MessageAllocator< ::google::cloud::aiplatform::container::v1beta1::MatchRequest, ::google::cloud::aiplatform::container::v1beta1::MatchResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::google::cloud::aiplatform::container::v1beta1::MatchRequest, ::google::cloud::aiplatform::container::v1beta1::MatchResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::cloud::aiplatform::container::v1beta1::MatchRequest, ::google::cloud::aiplatform::container::v1beta1::MatchResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_Match() override {
+    ~WithCallbackMethod_Match() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -235,46 +200,26 @@ class MatchService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Match(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* /*request*/, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* Match(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* /*request*/, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* /*request*/, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_BatchMatch : public BaseClass {
+  class WithCallbackMethod_BatchMatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithCallbackMethod_BatchMatch() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodCallback(1,
+    WithCallbackMethod_BatchMatch() {
+      ::grpc::Service::MarkMethodCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response) { return this->BatchMatch(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response) { return this->BatchMatch(context, request, response); }));}
     void SetMessageAllocatorFor_BatchMatch(
-        ::grpc::experimental::MessageAllocator< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>* allocator) {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+        ::grpc::MessageAllocator< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-    #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
-    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~ExperimentalWithCallbackMethod_BatchMatch() override {
+    ~WithCallbackMethod_BatchMatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -282,20 +227,11 @@ class MatchService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* BatchMatch(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* /*request*/, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* BatchMatch(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* /*request*/, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* /*request*/, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* /*response*/)  { return nullptr; }
   };
-  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_Match<ExperimentalWithCallbackMethod_BatchMatch<Service > > CallbackService;
-  #endif
-
-  typedef ExperimentalWithCallbackMethod_Match<ExperimentalWithCallbackMethod_BatchMatch<Service > > ExperimentalCallbackService;
+  typedef WithCallbackMethod_Match<WithCallbackMethod_BatchMatch<Service > > CallbackService;
+  typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Match : public BaseClass {
    private:
@@ -371,27 +307,17 @@ class MatchService final {
     }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_Match : public BaseClass {
+  class WithRawCallbackMethod_Match : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_Match() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(0,
+    WithRawCallbackMethod_Match() {
+      ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Match(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Match(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_Match() override {
+    ~WithRawCallbackMethod_Match() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -399,37 +325,21 @@ class MatchService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Match(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* Match(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_BatchMatch : public BaseClass {
+  class WithRawCallbackMethod_BatchMatch : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    ExperimentalWithRawCallbackMethod_BatchMatch() {
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::Service::
-    #else
-      ::grpc::Service::experimental().
-    #endif
-        MarkMethodRawCallback(1,
+    WithRawCallbackMethod_BatchMatch() {
+      ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-                   ::grpc::CallbackServerContext*
-    #else
-                   ::grpc::experimental::CallbackServerContext*
-    #endif
-                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BatchMatch(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BatchMatch(context, request, response); }));
     }
-    ~ExperimentalWithRawCallbackMethod_BatchMatch() override {
+    ~WithRawCallbackMethod_BatchMatch() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -437,14 +347,8 @@ class MatchService final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* BatchMatch(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #else
-    virtual ::grpc::experimental::ServerUnaryReactor* BatchMatch(
-      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
-    #endif
-      { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Match : public BaseClass {

@@ -45,11 +45,11 @@ MatchService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   return ::grpc::internal::BlockingUnaryCall< ::google::cloud::aiplatform::container::v1beta1::MatchRequest, ::google::cloud::aiplatform::container::v1beta1::MatchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Match_, context, request, response);
 }
 
-void MatchService::Stub::experimental_async::Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, std::function<void(::grpc::Status)> f) {
+void MatchService::Stub::async::Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::google::cloud::aiplatform::container::v1beta1::MatchRequest, ::google::cloud::aiplatform::container::v1beta1::MatchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Match_, context, request, response, std::move(f));
 }
 
-void MatchService::Stub::experimental_async::Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void MatchService::Stub::async::Match(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::MatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::MatchResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Match_, context, request, response, reactor);
 }
 
@@ -68,11 +68,11 @@ void MatchService::Stub::experimental_async::Match(::grpc::ClientContext* contex
   return ::grpc::internal::BlockingUnaryCall< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_BatchMatch_, context, request, response);
 }
 
-void MatchService::Stub::experimental_async::BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, std::function<void(::grpc::Status)> f) {
+void MatchService::Stub::async::BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BatchMatch_, context, request, response, std::move(f));
 }
 
-void MatchService::Stub::experimental_async::BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+void MatchService::Stub::async::BatchMatch(::grpc::ClientContext* context, const ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* request, ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BatchMatch_, context, request, response, reactor);
 }
 

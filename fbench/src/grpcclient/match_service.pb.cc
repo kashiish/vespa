@@ -5,10 +5,9 @@
 
 #include <algorithm>
 
-#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite_inl.h>
+#include <google/protobuf/wire_format_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/reflection_ops.h>
@@ -16,190 +15,132 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
-extern PROTOBUF_INTERNAL_EXPORT_match_5fservice_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_MatchResponse_Neighbor_match_5fservice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_match_5fservice_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Namespace_match_5fservice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_match_5fservice_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_BatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_match_5fservice_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_MatchRequest_match_5fservice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_match_5fservice_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_MatchResponse_match_5fservice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_match_5fservice_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_BatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_third_5fparty_2fgoogleapis_2fgoogle_2frpc_2fstatus_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Status_third_5fparty_2fgoogleapis_2fgoogle_2frpc_2fstatus_2eproto;
+PROTOBUF_PRAGMA_INIT_SEG
 namespace google {
 namespace cloud {
 namespace aiplatform {
 namespace container {
 namespace v1beta1 {
-class MatchRequestDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MatchRequest> _instance;
-} _MatchRequest_default_instance_;
-class MatchResponse_NeighborDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MatchResponse_Neighbor> _instance;
-} _MatchResponse_Neighbor_default_instance_;
-class MatchResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<MatchResponse> _instance;
-} _MatchResponse_default_instance_;
-class BatchMatchRequest_BatchMatchRequestPerIndexDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BatchMatchRequest_BatchMatchRequestPerIndex> _instance;
-} _BatchMatchRequest_BatchMatchRequestPerIndex_default_instance_;
-class BatchMatchRequestDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BatchMatchRequest> _instance;
-} _BatchMatchRequest_default_instance_;
-class BatchMatchResponse_BatchMatchResponsePerIndexDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BatchMatchResponse_BatchMatchResponsePerIndex> _instance;
-} _BatchMatchResponse_BatchMatchResponsePerIndex_default_instance_;
-class BatchMatchResponseDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<BatchMatchResponse> _instance;
-} _BatchMatchResponse_default_instance_;
-class NamespaceDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<Namespace> _instance;
-} _Namespace_default_instance_;
+constexpr MatchRequest::MatchRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : float_val_()
+  , _float_val_cached_byte_size_()
+  , restricts_()
+  , deployed_index_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , num_neighbors_(0)
+  , per_crowding_attribute_num_neighbors_(0)
+  , approx_num_neighbors_(0)
+  , leaf_nodes_to_search_percent_override_(0){}
+struct MatchRequestDefaultTypeInternal {
+  constexpr MatchRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MatchRequestDefaultTypeInternal() {}
+  union {
+    MatchRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MatchRequestDefaultTypeInternal _MatchRequest_default_instance_;
+constexpr MatchResponse_Neighbor::MatchResponse_Neighbor(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , distance_(0){}
+struct MatchResponse_NeighborDefaultTypeInternal {
+  constexpr MatchResponse_NeighborDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MatchResponse_NeighborDefaultTypeInternal() {}
+  union {
+    MatchResponse_Neighbor _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MatchResponse_NeighborDefaultTypeInternal _MatchResponse_Neighbor_default_instance_;
+constexpr MatchResponse::MatchResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : neighbor_(){}
+struct MatchResponseDefaultTypeInternal {
+  constexpr MatchResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~MatchResponseDefaultTypeInternal() {}
+  union {
+    MatchResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MatchResponseDefaultTypeInternal _MatchResponse_default_instance_;
+constexpr BatchMatchRequest_BatchMatchRequestPerIndex::BatchMatchRequest_BatchMatchRequestPerIndex(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : requests_()
+  , deployed_index_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , low_level_batch_size_(0){}
+struct BatchMatchRequest_BatchMatchRequestPerIndexDefaultTypeInternal {
+  constexpr BatchMatchRequest_BatchMatchRequestPerIndexDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BatchMatchRequest_BatchMatchRequestPerIndexDefaultTypeInternal() {}
+  union {
+    BatchMatchRequest_BatchMatchRequestPerIndex _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BatchMatchRequest_BatchMatchRequestPerIndexDefaultTypeInternal _BatchMatchRequest_BatchMatchRequestPerIndex_default_instance_;
+constexpr BatchMatchRequest::BatchMatchRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : requests_(){}
+struct BatchMatchRequestDefaultTypeInternal {
+  constexpr BatchMatchRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BatchMatchRequestDefaultTypeInternal() {}
+  union {
+    BatchMatchRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BatchMatchRequestDefaultTypeInternal _BatchMatchRequest_default_instance_;
+constexpr BatchMatchResponse_BatchMatchResponsePerIndex::BatchMatchResponse_BatchMatchResponsePerIndex(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : responses_()
+  , deployed_index_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , status_(nullptr){}
+struct BatchMatchResponse_BatchMatchResponsePerIndexDefaultTypeInternal {
+  constexpr BatchMatchResponse_BatchMatchResponsePerIndexDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BatchMatchResponse_BatchMatchResponsePerIndexDefaultTypeInternal() {}
+  union {
+    BatchMatchResponse_BatchMatchResponsePerIndex _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BatchMatchResponse_BatchMatchResponsePerIndexDefaultTypeInternal _BatchMatchResponse_BatchMatchResponsePerIndex_default_instance_;
+constexpr BatchMatchResponse::BatchMatchResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : responses_(){}
+struct BatchMatchResponseDefaultTypeInternal {
+  constexpr BatchMatchResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~BatchMatchResponseDefaultTypeInternal() {}
+  union {
+    BatchMatchResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT BatchMatchResponseDefaultTypeInternal _BatchMatchResponse_default_instance_;
+constexpr Namespace::Namespace(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : allow_tokens_()
+  , deny_tokens_()
+  , name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+struct NamespaceDefaultTypeInternal {
+  constexpr NamespaceDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~NamespaceDefaultTypeInternal() {}
+  union {
+    Namespace _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT NamespaceDefaultTypeInternal _Namespace_default_instance_;
 }  // namespace v1beta1
 }  // namespace container
 }  // namespace aiplatform
 }  // namespace cloud
 }  // namespace google
-static void InitDefaultsMatchRequest_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_match_5fservice_2eproto[8];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_match_5fservice_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_match_5fservice_2eproto = nullptr;
 
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_MatchRequest_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::MatchRequest();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::MatchRequest::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_MatchRequest_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMatchRequest_match_5fservice_2eproto}, {
-      &scc_info_Namespace_match_5fservice_2eproto.base,}};
-
-static void InitDefaultsMatchResponse_Neighbor_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_MatchResponse_Neighbor_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_MatchResponse_Neighbor_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMatchResponse_Neighbor_match_5fservice_2eproto}, {}};
-
-static void InitDefaultsMatchResponse_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_MatchResponse_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::MatchResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::MatchResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_MatchResponse_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMatchResponse_match_5fservice_2eproto}, {
-      &scc_info_MatchResponse_Neighbor_match_5fservice_2eproto.base,}};
-
-static void InitDefaultsBatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_BatchMatchRequest_BatchMatchRequestPerIndex_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_BatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsBatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto}, {
-      &scc_info_MatchRequest_match_5fservice_2eproto.base,}};
-
-static void InitDefaultsBatchMatchRequest_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_BatchMatchRequest_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_BatchMatchRequest_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsBatchMatchRequest_match_5fservice_2eproto}, {
-      &scc_info_BatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto.base,}};
-
-static void InitDefaultsBatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_BatchMatchResponsePerIndex_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_BatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsBatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto}, {
-      &scc_info_MatchResponse_match_5fservice_2eproto.base,
-      &scc_info_Status_third_5fparty_2fgoogleapis_2fgoogle_2frpc_2fstatus_2eproto.base,}};
-
-static void InitDefaultsBatchMatchResponse_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_BatchMatchResponse_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsBatchMatchResponse_match_5fservice_2eproto}, {
-      &scc_info_BatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto.base,}};
-
-static void InitDefaultsNamespace_match_5fservice_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::google::cloud::aiplatform::container::v1beta1::_Namespace_default_instance_;
-    new (ptr) ::google::cloud::aiplatform::container::v1beta1::Namespace();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::google::cloud::aiplatform::container::v1beta1::Namespace::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_Namespace_match_5fservice_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsNamespace_match_5fservice_2eproto}, {}};
-
-void InitDefaults_match_5fservice_2eproto() {
-  ::google::protobuf::internal::InitSCC(&scc_info_MatchRequest_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MatchResponse_Neighbor_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MatchResponse_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BatchMatchRequest_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_BatchMatchResponse_match_5fservice_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Namespace_match_5fservice_2eproto.base);
-}
-
-::google::protobuf::Metadata file_level_metadata_match_5fservice_2eproto[8];
-constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_match_5fservice_2eproto = nullptr;
-constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_match_5fservice_2eproto = nullptr;
-
-const ::google::protobuf::uint32 TableStruct_match_5fservice_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_match_5fservice_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::google::cloud::aiplatform::container::v1beta1::MatchRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -262,7 +203,7 @@ const ::google::protobuf::uint32 TableStruct_match_5fservice_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::google::cloud::aiplatform::container::v1beta1::Namespace, allow_tokens_),
   PROTOBUF_FIELD_OFFSET(::google::cloud::aiplatform::container::v1beta1::Namespace, deny_tokens_),
 };
-static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::google::cloud::aiplatform::container::v1beta1::MatchRequest)},
   { 12, -1, sizeof(::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor)},
   { 19, -1, sizeof(::google::cloud::aiplatform::container::v1beta1::MatchResponse)},
@@ -273,24 +214,18 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 53, -1, sizeof(::google::cloud::aiplatform::container::v1beta1::Namespace)},
 };
 
-static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_MatchRequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_MatchResponse_Neighbor_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_MatchResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchRequest_BatchMatchRequestPerIndex_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchRequest_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_BatchMatchResponsePerIndex_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::google::cloud::aiplatform::container::v1beta1::_Namespace_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_MatchRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_MatchResponse_Neighbor_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_MatchResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchRequest_BatchMatchRequestPerIndex_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_BatchMatchResponsePerIndex_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::google::cloud::aiplatform::container::v1beta1::_Namespace_default_instance_),
 };
 
-::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_match_5fservice_2eproto = {
-  {}, AddDescriptors_match_5fservice_2eproto, "match_service.proto", schemas,
-  file_default_instances, TableStruct_match_5fservice_2eproto::offsets,
-  file_level_metadata_match_5fservice_2eproto, 8, file_level_enum_descriptors_match_5fservice_2eproto, file_level_service_descriptors_match_5fservice_2eproto,
-};
-
-const char descriptor_table_protodef_match_5fservice_2eproto[] =
+const char descriptor_table_protodef_match_5fservice_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\023match_service.proto\022)google.cloud.aipl"
   "atform.container.v1beta1\032.third_party/go"
   "ogleapis/google/rpc/status.proto\"\227\002\n\014Mat"
@@ -330,22 +265,24 @@ const char descriptor_table_protodef_match_5fservice_2eproto[] =
   "platform.container.v1beta1.BatchMatchRes"
   "ponse\"\000b\006proto3"
   ;
-::google::protobuf::internal::DescriptorTable descriptor_table_match_5fservice_2eproto = {
-  false, InitDefaults_match_5fservice_2eproto, 
-  descriptor_table_protodef_match_5fservice_2eproto,
-  "match_service.proto", &assign_descriptors_table_match_5fservice_2eproto, 1495,
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_match_5fservice_2eproto_deps[1] = {
+  &::descriptor_table_third_5fparty_2fgoogleapis_2fgoogle_2frpc_2fstatus_2eproto,
 };
-
-void AddDescriptors_match_5fservice_2eproto() {
-  static constexpr ::google::protobuf::internal::InitFunc deps[1] =
-  {
-    ::AddDescriptors_third_5fparty_2fgoogleapis_2fgoogle_2frpc_2fstatus_2eproto,
-  };
- ::google::protobuf::internal::AddDescriptors(&descriptor_table_match_5fservice_2eproto, deps, 1);
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_match_5fservice_2eproto_once;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_match_5fservice_2eproto = {
+  false, false, 1495, descriptor_table_protodef_match_5fservice_2eproto, "match_service.proto", 
+  &descriptor_table_match_5fservice_2eproto_once, descriptor_table_match_5fservice_2eproto_deps, 1, 8,
+  schemas, file_default_instances, TableStruct_match_5fservice_2eproto::offsets,
+  file_level_metadata_match_5fservice_2eproto, file_level_enum_descriptors_match_5fservice_2eproto, file_level_service_descriptors_match_5fservice_2eproto,
+};
+PROTOBUF_ATTRIBUTE_WEAK ::PROTOBUF_NAMESPACE_ID::Metadata
+descriptor_table_match_5fservice_2eproto_metadata_getter(int index) {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_match_5fservice_2eproto);
+  return descriptor_table_match_5fservice_2eproto.file_level_metadata[index];
 }
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_match_5fservice_2eproto = []() { AddDescriptors_match_5fservice_2eproto(); return true; }();
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_match_5fservice_2eproto(&descriptor_table_match_5fservice_2eproto);
 namespace google {
 namespace cloud {
 namespace aiplatform {
@@ -354,36 +291,27 @@ namespace v1beta1 {
 
 // ===================================================================
 
-void MatchRequest::InitAsDefaultInstance() {
-}
-class MatchRequest::HasBitSetters {
+class MatchRequest::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MatchRequest::kDeployedIndexIdFieldNumber;
-const int MatchRequest::kFloatValFieldNumber;
-const int MatchRequest::kNumNeighborsFieldNumber;
-const int MatchRequest::kRestrictsFieldNumber;
-const int MatchRequest::kPerCrowdingAttributeNumNeighborsFieldNumber;
-const int MatchRequest::kApproxNumNeighborsFieldNumber;
-const int MatchRequest::kLeafNodesToSearchPercentOverrideFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-MatchRequest::MatchRequest()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+MatchRequest::MatchRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  float_val_(arena),
+  restricts_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.MatchRequest)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.MatchRequest)
 }
 MatchRequest::MatchRequest(const MatchRequest& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       float_val_(from.float_val_),
       restricts_(from.restricts_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  deployed_index_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.deployed_index_id().size() > 0) {
-    deployed_index_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.deployed_index_id_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  deployed_index_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_deployed_index_id().empty()) {
+    deployed_index_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_deployed_index_id(), 
+      GetArena());
   }
   ::memcpy(&num_neighbors_, &from.num_neighbors_,
     static_cast<size_t>(reinterpret_cast<char*>(&leaf_nodes_to_search_percent_override_) -
@@ -392,411 +320,193 @@ MatchRequest::MatchRequest(const MatchRequest& from)
 }
 
 void MatchRequest::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_MatchRequest_match_5fservice_2eproto.base);
-  deployed_index_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&num_neighbors_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&leaf_nodes_to_search_percent_override_) -
-      reinterpret_cast<char*>(&num_neighbors_)) + sizeof(leaf_nodes_to_search_percent_override_));
+deployed_index_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&num_neighbors_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&leaf_nodes_to_search_percent_override_) -
+    reinterpret_cast<char*>(&num_neighbors_)) + sizeof(leaf_nodes_to_search_percent_override_));
 }
 
 MatchRequest::~MatchRequest() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.MatchRequest)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void MatchRequest::SharedDtor() {
-  deployed_index_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  deployed_index_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void MatchRequest::ArenaDtor(void* object) {
+  MatchRequest* _this = reinterpret_cast< MatchRequest* >(object);
+  (void)_this;
+}
+void MatchRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void MatchRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const MatchRequest& MatchRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_MatchRequest_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void MatchRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   float_val_.Clear();
   restricts_.Clear();
-  deployed_index_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  deployed_index_id_.ClearToEmpty();
   ::memset(&num_neighbors_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&leaf_nodes_to_search_percent_override_) -
       reinterpret_cast<char*>(&num_neighbors_)) + sizeof(leaf_nodes_to_search_percent_override_));
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* MatchRequest::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<MatchRequest*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* MatchRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string deployed_index_id = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.MatchRequest.deployed_index_id");
-        object = msg->mutable_deployed_index_id();
-        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-          goto string_till_end;
-        }
-        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-        ptr += size;
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_deployed_index_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.MatchRequest.deployed_index_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated float float_val = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) == 18) {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::protobuf::internal::PackedFloatParser;
-          object = msg->mutable_float_val();
-          if (size > end - ptr) goto len_delim_till_end;
-          auto newend = ptr + size;
-          if (size) ptr = parser_till_end(ptr, newend, object, ctx);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
-          break;
-        } else if (static_cast<::google::protobuf::uint8>(tag) != 21) goto handle_unusual;
-        do {
-          msg->add_float_val(::google::protobuf::io::UnalignedLoad<float>(ptr));
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_float_val(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21) {
+          _internal_add_float_val(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
           ptr += sizeof(float);
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 21 && (ptr += 1));
-        break;
-      }
+        } else goto handle_unusual;
+        continue;
       // int32 num_neighbors = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        msg->set_num_neighbors(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          num_neighbors_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .google.cloud.aiplatform.container.v1beta1.Namespace restricts = 4;
-      case 4: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::cloud::aiplatform::container::v1beta1::Namespace::_InternalParse;
-          object = msg->add_restricts();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 34 && (ptr += 1));
-        break;
-      }
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_restricts(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else goto handle_unusual;
+        continue;
       // int32 per_crowding_attribute_num_neighbors = 5;
-      case 5: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
-        msg->set_per_crowding_attribute_num_neighbors(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          per_crowding_attribute_num_neighbors_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // int32 approx_num_neighbors = 6;
-      case 6: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
-        msg->set_approx_num_neighbors(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          approx_num_neighbors_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // int32 leaf_nodes_to_search_percent_override = 7;
-      case 7: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 56) goto handle_unusual;
-        msg->set_leaf_nodes_to_search_percent_override(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          leaf_nodes_to_search_percent_override_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-string_till_end:
-  static_cast<::std::string*>(object)->clear();
-  static_cast<::std::string*>(object)->reserve(size);
-  goto len_delim_till_end;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MatchRequest::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string deployed_index_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_deployed_index_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.MatchRequest.deployed_index_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated float float_val = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, this->mutable_float_val())));
-        } else if (static_cast< ::google::protobuf::uint8>(tag) == (21 & 0xFF)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 1, 18u, input, this->mutable_float_val())));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 num_neighbors = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &num_neighbors_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .google.cloud.aiplatform.container.v1beta1.Namespace restricts = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_restricts()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 per_crowding_attribute_num_neighbors = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &per_crowding_attribute_num_neighbors_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 approx_num_neighbors = 6;
-      case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &approx_num_neighbors_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 leaf_nodes_to_search_percent_override = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (56 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &leaf_nodes_to_search_percent_override_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void MatchRequest::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string deployed_index_id = 1;
-  if (this->deployed_index_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.MatchRequest.deployed_index_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->deployed_index_id(), output);
-  }
-
-  // repeated float float_val = 2;
-  if (this->float_val_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(2, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(_float_val_cached_byte_size_.load(
-        std::memory_order_relaxed));
-    ::google::protobuf::internal::WireFormatLite::WriteFloatArray(
-      this->float_val().data(), this->float_val_size(), output);
-  }
-
-  // int32 num_neighbors = 3;
-  if (this->num_neighbors() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->num_neighbors(), output);
-  }
-
-  // repeated .google.cloud.aiplatform.container.v1beta1.Namespace restricts = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->restricts_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4,
-      this->restricts(static_cast<int>(i)),
-      output);
-  }
-
-  // int32 per_crowding_attribute_num_neighbors = 5;
-  if (this->per_crowding_attribute_num_neighbors() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->per_crowding_attribute_num_neighbors(), output);
-  }
-
-  // int32 approx_num_neighbors = 6;
-  if (this->approx_num_neighbors() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->approx_num_neighbors(), output);
-  }
-
-  // int32 leaf_nodes_to_search_percent_override = 7;
-  if (this->leaf_nodes_to_search_percent_override() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->leaf_nodes_to_search_percent_override(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.MatchRequest)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* MatchRequest::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* MatchRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string deployed_index_id = 1;
   if (this->deployed_index_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_deployed_index_id().data(), static_cast<int>(this->_internal_deployed_index_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.MatchRequest.deployed_index_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->deployed_index_id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_deployed_index_id(), target);
   }
 
   // repeated float float_val = 2;
-  if (this->float_val_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      2,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        _float_val_cached_byte_size_.load(std::memory_order_relaxed),
-         target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteFloatNoTagToArray(this->float_val_, target);
+  if (this->_internal_float_val_size() > 0) {
+    target = stream->WriteFixedPacked(2, _internal_float_val(), target);
   }
 
   // int32 num_neighbors = 3;
   if (this->num_neighbors() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->num_neighbors(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_num_neighbors(), target);
   }
 
   // repeated .google.cloud.aiplatform.container.v1beta1.Namespace restricts = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->restricts_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->restricts(static_cast<int>(i)), target);
+      n = static_cast<unsigned int>(this->_internal_restricts_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, this->_internal_restricts(i), target, stream);
   }
 
   // int32 per_crowding_attribute_num_neighbors = 5;
   if (this->per_crowding_attribute_num_neighbors() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->per_crowding_attribute_num_neighbors(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_per_crowding_attribute_num_neighbors(), target);
   }
 
   // int32 approx_num_neighbors = 6;
   if (this->approx_num_neighbors() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->approx_num_neighbors(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_approx_num_neighbors(), target);
   }
 
   // int32 leaf_nodes_to_search_percent_override = 7;
   if (this->leaf_nodes_to_search_percent_override() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->leaf_nodes_to_search_percent_override(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_leaf_nodes_to_search_percent_override(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.MatchRequest)
   return target;
@@ -806,90 +516,85 @@ size_t MatchRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated float float_val = 2;
   {
-    unsigned int count = static_cast<unsigned int>(this->float_val_size());
+    unsigned int count = static_cast<unsigned int>(this->_internal_float_val_size());
     size_t data_size = 4UL * count;
     if (data_size > 0) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast<::google::protobuf::int32>(data_size));
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
     _float_val_cached_byte_size_.store(cached_size,
                                     std::memory_order_relaxed);
     total_size += data_size;
   }
 
   // repeated .google.cloud.aiplatform.container.v1beta1.Namespace restricts = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->restricts_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->restricts(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_restricts_size();
+  for (const auto& msg : this->restricts_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string deployed_index_id = 1;
   if (this->deployed_index_id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->deployed_index_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_deployed_index_id());
   }
 
   // int32 num_neighbors = 3;
   if (this->num_neighbors() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->num_neighbors());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_num_neighbors());
   }
 
   // int32 per_crowding_attribute_num_neighbors = 5;
   if (this->per_crowding_attribute_num_neighbors() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->per_crowding_attribute_num_neighbors());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_per_crowding_attribute_num_neighbors());
   }
 
   // int32 approx_num_neighbors = 6;
   if (this->approx_num_neighbors() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->approx_num_neighbors());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_approx_num_neighbors());
   }
 
   // int32 leaf_nodes_to_search_percent_override = 7;
   if (this->leaf_nodes_to_search_percent_override() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->leaf_nodes_to_search_percent_override());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_leaf_nodes_to_search_percent_override());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void MatchRequest::MergeFrom(const ::google::protobuf::Message& from) {
+void MatchRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
   GOOGLE_DCHECK_NE(&from, this);
   const MatchRequest* source =
-      ::google::protobuf::DynamicCastToGenerated<MatchRequest>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<MatchRequest>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.MatchRequest)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.MatchRequest)
     MergeFrom(*source);
@@ -899,31 +604,30 @@ void MatchRequest::MergeFrom(const ::google::protobuf::Message& from) {
 void MatchRequest::MergeFrom(const MatchRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   float_val_.MergeFrom(from.float_val_);
   restricts_.MergeFrom(from.restricts_);
   if (from.deployed_index_id().size() > 0) {
-
-    deployed_index_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.deployed_index_id_);
+    _internal_set_deployed_index_id(from._internal_deployed_index_id());
   }
   if (from.num_neighbors() != 0) {
-    set_num_neighbors(from.num_neighbors());
+    _internal_set_num_neighbors(from._internal_num_neighbors());
   }
   if (from.per_crowding_attribute_num_neighbors() != 0) {
-    set_per_crowding_attribute_num_neighbors(from.per_crowding_attribute_num_neighbors());
+    _internal_set_per_crowding_attribute_num_neighbors(from._internal_per_crowding_attribute_num_neighbors());
   }
   if (from.approx_num_neighbors() != 0) {
-    set_approx_num_neighbors(from.approx_num_neighbors());
+    _internal_set_approx_num_neighbors(from._internal_approx_num_neighbors());
   }
   if (from.leaf_nodes_to_search_percent_override() != 0) {
-    set_leaf_nodes_to_search_percent_override(from.leaf_nodes_to_search_percent_override());
+    _internal_set_leaf_nodes_to_search_percent_override(from._internal_leaf_nodes_to_search_percent_override());
   }
 }
 
-void MatchRequest::CopyFrom(const ::google::protobuf::Message& from) {
+void MatchRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.MatchRequest)
   if (&from == this) return;
   Clear();
@@ -941,267 +645,156 @@ bool MatchRequest::IsInitialized() const {
   return true;
 }
 
-void MatchRequest::Swap(MatchRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void MatchRequest::InternalSwap(MatchRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   float_val_.InternalSwap(&other->float_val_);
-  CastToBase(&restricts_)->InternalSwap(CastToBase(&other->restricts_));
-  deployed_index_id_.Swap(&other->deployed_index_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(num_neighbors_, other->num_neighbors_);
-  swap(per_crowding_attribute_num_neighbors_, other->per_crowding_attribute_num_neighbors_);
-  swap(approx_num_neighbors_, other->approx_num_neighbors_);
-  swap(leaf_nodes_to_search_percent_override_, other->leaf_nodes_to_search_percent_override_);
+  restricts_.InternalSwap(&other->restricts_);
+  deployed_index_id_.Swap(&other->deployed_index_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(MatchRequest, leaf_nodes_to_search_percent_override_)
+      + sizeof(MatchRequest::leaf_nodes_to_search_percent_override_)
+      - PROTOBUF_FIELD_OFFSET(MatchRequest, num_neighbors_)>(
+          reinterpret_cast<char*>(&num_neighbors_),
+          reinterpret_cast<char*>(&other->num_neighbors_));
 }
 
-::google::protobuf::Metadata MatchRequest::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata MatchRequest::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void MatchResponse_Neighbor::InitAsDefaultInstance() {
-}
-class MatchResponse_Neighbor::HasBitSetters {
+class MatchResponse_Neighbor::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MatchResponse_Neighbor::kIdFieldNumber;
-const int MatchResponse_Neighbor::kDistanceFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-MatchResponse_Neighbor::MatchResponse_Neighbor()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+MatchResponse_Neighbor::MatchResponse_Neighbor(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
 }
 MatchResponse_Neighbor::MatchResponse_Neighbor(const MatchResponse_Neighbor& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.id().size() > 0) {
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_id().empty()) {
+    id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_id(), 
+      GetArena());
   }
   distance_ = from.distance_;
   // @@protoc_insertion_point(copy_constructor:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
 }
 
 void MatchResponse_Neighbor::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_MatchResponse_Neighbor_match_5fservice_2eproto.base);
-  id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  distance_ = 0;
+id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+distance_ = 0;
 }
 
 MatchResponse_Neighbor::~MatchResponse_Neighbor() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void MatchResponse_Neighbor::SharedDtor() {
-  id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void MatchResponse_Neighbor::ArenaDtor(void* object) {
+  MatchResponse_Neighbor* _this = reinterpret_cast< MatchResponse_Neighbor* >(object);
+  (void)_this;
+}
+void MatchResponse_Neighbor::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void MatchResponse_Neighbor::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const MatchResponse_Neighbor& MatchResponse_Neighbor::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_MatchResponse_Neighbor_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void MatchResponse_Neighbor::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  id_.ClearToEmpty();
   distance_ = 0;
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* MatchResponse_Neighbor::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<MatchResponse_Neighbor*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* MatchResponse_Neighbor::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string id = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor.id");
-        object = msg->mutable_id();
-        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-          goto string_till_end;
-        }
-        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-        ptr += size;
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor.id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // double distance = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 17) goto handle_unusual;
-        msg->set_distance(::google::protobuf::io::UnalignedLoad<double>(ptr));
-        ptr += sizeof(double);
-        break;
-      }
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          distance_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-string_till_end:
-  static_cast<::std::string*>(object)->clear();
-  static_cast<::std::string*>(object)->reserve(size);
-  goto len_delim_till_end;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MatchResponse_Neighbor::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->id().data(), static_cast<int>(this->id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor.id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // double distance = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (17 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &distance_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void MatchResponse_Neighbor::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string id = 1;
-  if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor.id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->id(), output);
-  }
-
-  // double distance = 2;
-  if (this->distance() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->distance(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* MatchResponse_Neighbor::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* MatchResponse_Neighbor::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string id = 1;
   if (this->id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->id().data(), static_cast<int>(this->id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor.id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
   }
 
   // double distance = 2;
-  if (this->distance() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->distance(), target);
+  if (!(this->distance() <= 0 && this->distance() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_distance(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
   return target;
@@ -1211,41 +804,40 @@ size_t MatchResponse_Neighbor::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string id = 1;
   if (this->id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
   }
 
   // double distance = 2;
-  if (this->distance() != 0) {
+  if (!(this->distance() <= 0 && this->distance() >= 0)) {
     total_size += 1 + 8;
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void MatchResponse_Neighbor::MergeFrom(const ::google::protobuf::Message& from) {
+void MatchResponse_Neighbor::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
   GOOGLE_DCHECK_NE(&from, this);
   const MatchResponse_Neighbor* source =
-      ::google::protobuf::DynamicCastToGenerated<MatchResponse_Neighbor>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<MatchResponse_Neighbor>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
     MergeFrom(*source);
@@ -1255,20 +847,19 @@ void MatchResponse_Neighbor::MergeFrom(const ::google::protobuf::Message& from) 
 void MatchResponse_Neighbor::MergeFrom(const MatchResponse_Neighbor& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.id().size() > 0) {
-
-    id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.id_);
+    _internal_set_id(from._internal_id());
   }
-  if (from.distance() != 0) {
-    set_distance(from.distance());
+  if (!(from.distance() <= 0 && from.distance() >= 0)) {
+    _internal_set_distance(from._internal_distance());
   }
 }
 
-void MatchResponse_Neighbor::CopyFrom(const ::google::protobuf::Message& from) {
+void MatchResponse_Neighbor::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor)
   if (&from == this) return;
   Clear();
@@ -1286,211 +877,129 @@ bool MatchResponse_Neighbor::IsInitialized() const {
   return true;
 }
 
-void MatchResponse_Neighbor::Swap(MatchResponse_Neighbor* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void MatchResponse_Neighbor::InternalSwap(MatchResponse_Neighbor* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  id_.Swap(&other->id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(distance_, other->distance_);
 }
 
-::google::protobuf::Metadata MatchResponse_Neighbor::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata MatchResponse_Neighbor::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void MatchResponse::InitAsDefaultInstance() {
-}
-class MatchResponse::HasBitSetters {
+class MatchResponse::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int MatchResponse::kNeighborFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-MatchResponse::MatchResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+MatchResponse::MatchResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  neighbor_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.MatchResponse)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.MatchResponse)
 }
 MatchResponse::MatchResponse(const MatchResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       neighbor_(from.neighbor_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:google.cloud.aiplatform.container.v1beta1.MatchResponse)
 }
 
 void MatchResponse::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_MatchResponse_match_5fservice_2eproto.base);
 }
 
 MatchResponse::~MatchResponse() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.MatchResponse)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void MatchResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void MatchResponse::ArenaDtor(void* object) {
+  MatchResponse* _this = reinterpret_cast< MatchResponse* >(object);
+  (void)_this;
+}
+void MatchResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void MatchResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const MatchResponse& MatchResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_MatchResponse_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void MatchResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   neighbor_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* MatchResponse::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<MatchResponse*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* MatchResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor neighbor = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor::_InternalParse;
-          object = msg->add_neighbor();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_neighbor(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool MatchResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor neighbor = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_neighbor()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void MatchResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor neighbor = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->neighbor_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->neighbor(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.MatchResponse)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* MatchResponse::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* MatchResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor neighbor = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->neighbor_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->neighbor(static_cast<int>(i)), target);
+      n = static_cast<unsigned int>(this->_internal_neighbor_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_neighbor(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.MatchResponse)
   return target;
@@ -1500,40 +1009,35 @@ size_t MatchResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse.Neighbor neighbor = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->neighbor_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->neighbor(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_neighbor_size();
+  for (const auto& msg : this->neighbor_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void MatchResponse::MergeFrom(const ::google::protobuf::Message& from) {
+void MatchResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
   GOOGLE_DCHECK_NE(&from, this);
   const MatchResponse* source =
-      ::google::protobuf::DynamicCastToGenerated<MatchResponse>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<MatchResponse>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.MatchResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.MatchResponse)
     MergeFrom(*source);
@@ -1543,14 +1047,14 @@ void MatchResponse::MergeFrom(const ::google::protobuf::Message& from) {
 void MatchResponse::MergeFrom(const MatchResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   neighbor_.MergeFrom(from.neighbor_);
 }
 
-void MatchResponse::CopyFrom(const ::google::protobuf::Message& from) {
+void MatchResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.MatchResponse)
   if (&from == this) return;
   Clear();
@@ -1568,307 +1072,171 @@ bool MatchResponse::IsInitialized() const {
   return true;
 }
 
-void MatchResponse::Swap(MatchResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void MatchResponse::InternalSwap(MatchResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&neighbor_)->InternalSwap(CastToBase(&other->neighbor_));
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  neighbor_.InternalSwap(&other->neighbor_);
 }
 
-::google::protobuf::Metadata MatchResponse::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata MatchResponse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void BatchMatchRequest_BatchMatchRequestPerIndex::InitAsDefaultInstance() {
-}
-class BatchMatchRequest_BatchMatchRequestPerIndex::HasBitSetters {
+class BatchMatchRequest_BatchMatchRequestPerIndex::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BatchMatchRequest_BatchMatchRequestPerIndex::kDeployedIndexIdFieldNumber;
-const int BatchMatchRequest_BatchMatchRequestPerIndex::kRequestsFieldNumber;
-const int BatchMatchRequest_BatchMatchRequestPerIndex::kLowLevelBatchSizeFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-BatchMatchRequest_BatchMatchRequestPerIndex::BatchMatchRequest_BatchMatchRequestPerIndex()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+BatchMatchRequest_BatchMatchRequestPerIndex::BatchMatchRequest_BatchMatchRequestPerIndex(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  requests_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
 }
 BatchMatchRequest_BatchMatchRequestPerIndex::BatchMatchRequest_BatchMatchRequestPerIndex(const BatchMatchRequest_BatchMatchRequestPerIndex& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       requests_(from.requests_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  deployed_index_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.deployed_index_id().size() > 0) {
-    deployed_index_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.deployed_index_id_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  deployed_index_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_deployed_index_id().empty()) {
+    deployed_index_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_deployed_index_id(), 
+      GetArena());
   }
   low_level_batch_size_ = from.low_level_batch_size_;
   // @@protoc_insertion_point(copy_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
 }
 
 void BatchMatchRequest_BatchMatchRequestPerIndex::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_BatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto.base);
-  deployed_index_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  low_level_batch_size_ = 0;
+deployed_index_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+low_level_batch_size_ = 0;
 }
 
 BatchMatchRequest_BatchMatchRequestPerIndex::~BatchMatchRequest_BatchMatchRequestPerIndex() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void BatchMatchRequest_BatchMatchRequestPerIndex::SharedDtor() {
-  deployed_index_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  deployed_index_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void BatchMatchRequest_BatchMatchRequestPerIndex::ArenaDtor(void* object) {
+  BatchMatchRequest_BatchMatchRequestPerIndex* _this = reinterpret_cast< BatchMatchRequest_BatchMatchRequestPerIndex* >(object);
+  (void)_this;
+}
+void BatchMatchRequest_BatchMatchRequestPerIndex::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void BatchMatchRequest_BatchMatchRequestPerIndex::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const BatchMatchRequest_BatchMatchRequestPerIndex& BatchMatchRequest_BatchMatchRequestPerIndex::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_BatchMatchRequest_BatchMatchRequestPerIndex_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void BatchMatchRequest_BatchMatchRequestPerIndex::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   requests_.Clear();
-  deployed_index_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  deployed_index_id_.ClearToEmpty();
   low_level_batch_size_ = 0;
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* BatchMatchRequest_BatchMatchRequestPerIndex::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<BatchMatchRequest_BatchMatchRequestPerIndex*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* BatchMatchRequest_BatchMatchRequestPerIndex::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string deployed_index_id = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex.deployed_index_id");
-        object = msg->mutable_deployed_index_id();
-        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-          goto string_till_end;
-        }
-        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-        ptr += size;
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_deployed_index_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex.deployed_index_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .google.cloud.aiplatform.container.v1beta1.MatchRequest requests = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::cloud::aiplatform::container::v1beta1::MatchRequest::_InternalParse;
-          object = msg->add_requests();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
-        break;
-      }
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_requests(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // int32 low_level_batch_size = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
-        msg->set_low_level_batch_size(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          low_level_batch_size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-string_till_end:
-  static_cast<::std::string*>(object)->clear();
-  static_cast<::std::string*>(object)->reserve(size);
-  goto len_delim_till_end;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool BatchMatchRequest_BatchMatchRequestPerIndex::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string deployed_index_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_deployed_index_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex.deployed_index_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .google.cloud.aiplatform.container.v1beta1.MatchRequest requests = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_requests()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 low_level_batch_size = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &low_level_batch_size_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void BatchMatchRequest_BatchMatchRequestPerIndex::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string deployed_index_id = 1;
-  if (this->deployed_index_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex.deployed_index_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->deployed_index_id(), output);
-  }
-
-  // repeated .google.cloud.aiplatform.container.v1beta1.MatchRequest requests = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requests_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->requests(static_cast<int>(i)),
-      output);
-  }
-
-  // int32 low_level_batch_size = 3;
-  if (this->low_level_batch_size() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->low_level_batch_size(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* BatchMatchRequest_BatchMatchRequestPerIndex::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* BatchMatchRequest_BatchMatchRequestPerIndex::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string deployed_index_id = 1;
   if (this->deployed_index_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_deployed_index_id().data(), static_cast<int>(this->_internal_deployed_index_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex.deployed_index_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->deployed_index_id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_deployed_index_id(), target);
   }
 
   // repeated .google.cloud.aiplatform.container.v1beta1.MatchRequest requests = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requests_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->requests(static_cast<int>(i)), target);
+      n = static_cast<unsigned int>(this->_internal_requests_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_requests(i), target, stream);
   }
 
   // int32 low_level_batch_size = 3;
   if (this->low_level_batch_size() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->low_level_batch_size(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_low_level_batch_size(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
   return target;
@@ -1878,54 +1246,49 @@ size_t BatchMatchRequest_BatchMatchRequestPerIndex::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.MatchRequest requests = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->requests_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->requests(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_requests_size();
+  for (const auto& msg : this->requests_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string deployed_index_id = 1;
   if (this->deployed_index_id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->deployed_index_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_deployed_index_id());
   }
 
   // int32 low_level_batch_size = 3;
   if (this->low_level_batch_size() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->low_level_batch_size());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_low_level_batch_size());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void BatchMatchRequest_BatchMatchRequestPerIndex::MergeFrom(const ::google::protobuf::Message& from) {
+void BatchMatchRequest_BatchMatchRequestPerIndex::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
   GOOGLE_DCHECK_NE(&from, this);
   const BatchMatchRequest_BatchMatchRequestPerIndex* source =
-      ::google::protobuf::DynamicCastToGenerated<BatchMatchRequest_BatchMatchRequestPerIndex>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BatchMatchRequest_BatchMatchRequestPerIndex>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
     MergeFrom(*source);
@@ -1935,21 +1298,20 @@ void BatchMatchRequest_BatchMatchRequestPerIndex::MergeFrom(const ::google::prot
 void BatchMatchRequest_BatchMatchRequestPerIndex::MergeFrom(const BatchMatchRequest_BatchMatchRequestPerIndex& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   requests_.MergeFrom(from.requests_);
   if (from.deployed_index_id().size() > 0) {
-
-    deployed_index_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.deployed_index_id_);
+    _internal_set_deployed_index_id(from._internal_deployed_index_id());
   }
   if (from.low_level_batch_size() != 0) {
-    set_low_level_batch_size(from.low_level_batch_size());
+    _internal_set_low_level_batch_size(from._internal_low_level_batch_size());
   }
 }
 
-void BatchMatchRequest_BatchMatchRequestPerIndex::CopyFrom(const ::google::protobuf::Message& from) {
+void BatchMatchRequest_BatchMatchRequestPerIndex::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex)
   if (&from == this) return;
   Clear();
@@ -1967,212 +1329,130 @@ bool BatchMatchRequest_BatchMatchRequestPerIndex::IsInitialized() const {
   return true;
 }
 
-void BatchMatchRequest_BatchMatchRequestPerIndex::Swap(BatchMatchRequest_BatchMatchRequestPerIndex* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BatchMatchRequest_BatchMatchRequestPerIndex::InternalSwap(BatchMatchRequest_BatchMatchRequestPerIndex* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&requests_)->InternalSwap(CastToBase(&other->requests_));
-  deployed_index_id_.Swap(&other->deployed_index_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  requests_.InternalSwap(&other->requests_);
+  deployed_index_id_.Swap(&other->deployed_index_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(low_level_batch_size_, other->low_level_batch_size_);
 }
 
-::google::protobuf::Metadata BatchMatchRequest_BatchMatchRequestPerIndex::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata BatchMatchRequest_BatchMatchRequestPerIndex::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void BatchMatchRequest::InitAsDefaultInstance() {
-}
-class BatchMatchRequest::HasBitSetters {
+class BatchMatchRequest::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BatchMatchRequest::kRequestsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-BatchMatchRequest::BatchMatchRequest()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+BatchMatchRequest::BatchMatchRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  requests_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
 }
 BatchMatchRequest::BatchMatchRequest(const BatchMatchRequest& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       requests_(from.requests_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
 }
 
 void BatchMatchRequest::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_BatchMatchRequest_match_5fservice_2eproto.base);
 }
 
 BatchMatchRequest::~BatchMatchRequest() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void BatchMatchRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void BatchMatchRequest::ArenaDtor(void* object) {
+  BatchMatchRequest* _this = reinterpret_cast< BatchMatchRequest* >(object);
+  (void)_this;
+}
+void BatchMatchRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void BatchMatchRequest::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const BatchMatchRequest& BatchMatchRequest::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_BatchMatchRequest_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void BatchMatchRequest::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   requests_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* BatchMatchRequest::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<BatchMatchRequest*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* BatchMatchRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex requests = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex::_InternalParse;
-          object = msg->add_requests();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_requests(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool BatchMatchRequest::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex requests = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_requests()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void BatchMatchRequest::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex requests = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requests_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->requests(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* BatchMatchRequest::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* BatchMatchRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex requests = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->requests_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->requests(static_cast<int>(i)), target);
+      n = static_cast<unsigned int>(this->_internal_requests_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_requests(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
   return target;
@@ -2182,40 +1462,35 @@ size_t BatchMatchRequest::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchRequest.BatchMatchRequestPerIndex requests = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->requests_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->requests(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_requests_size();
+  for (const auto& msg : this->requests_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void BatchMatchRequest::MergeFrom(const ::google::protobuf::Message& from) {
+void BatchMatchRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
   GOOGLE_DCHECK_NE(&from, this);
   const BatchMatchRequest* source =
-      ::google::protobuf::DynamicCastToGenerated<BatchMatchRequest>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BatchMatchRequest>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
     MergeFrom(*source);
@@ -2225,14 +1500,14 @@ void BatchMatchRequest::MergeFrom(const ::google::protobuf::Message& from) {
 void BatchMatchRequest::MergeFrom(const BatchMatchRequest& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   requests_.MergeFrom(from.requests_);
 }
 
-void BatchMatchRequest::CopyFrom(const ::google::protobuf::Message& from) {
+void BatchMatchRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchRequest)
   if (&from == this) return;
   Clear();
@@ -2250,64 +1525,51 @@ bool BatchMatchRequest::IsInitialized() const {
   return true;
 }
 
-void BatchMatchRequest::Swap(BatchMatchRequest* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BatchMatchRequest::InternalSwap(BatchMatchRequest* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&requests_)->InternalSwap(CastToBase(&other->requests_));
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  requests_.InternalSwap(&other->requests_);
 }
 
-::google::protobuf::Metadata BatchMatchRequest::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata BatchMatchRequest::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void BatchMatchResponse_BatchMatchResponsePerIndex::InitAsDefaultInstance() {
-  ::google::cloud::aiplatform::container::v1beta1::_BatchMatchResponse_BatchMatchResponsePerIndex_default_instance_._instance.get_mutable()->status_ = const_cast< ::google::rpc::Status*>(
-      ::google::rpc::Status::internal_default_instance());
-}
-class BatchMatchResponse_BatchMatchResponsePerIndex::HasBitSetters {
+class BatchMatchResponse_BatchMatchResponsePerIndex::_Internal {
  public:
   static const ::google::rpc::Status& status(const BatchMatchResponse_BatchMatchResponsePerIndex* msg);
 };
 
 const ::google::rpc::Status&
-BatchMatchResponse_BatchMatchResponsePerIndex::HasBitSetters::status(const BatchMatchResponse_BatchMatchResponsePerIndex* msg) {
+BatchMatchResponse_BatchMatchResponsePerIndex::_Internal::status(const BatchMatchResponse_BatchMatchResponsePerIndex* msg) {
   return *msg->status_;
 }
 void BatchMatchResponse_BatchMatchResponsePerIndex::clear_status() {
-  if (GetArenaNoVirtual() == nullptr && status_ != nullptr) {
+  if (GetArena() == nullptr && status_ != nullptr) {
     delete status_;
   }
   status_ = nullptr;
 }
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BatchMatchResponse_BatchMatchResponsePerIndex::kDeployedIndexIdFieldNumber;
-const int BatchMatchResponse_BatchMatchResponsePerIndex::kResponsesFieldNumber;
-const int BatchMatchResponse_BatchMatchResponsePerIndex::kStatusFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-BatchMatchResponse_BatchMatchResponsePerIndex::BatchMatchResponse_BatchMatchResponsePerIndex()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+BatchMatchResponse_BatchMatchResponsePerIndex::BatchMatchResponse_BatchMatchResponsePerIndex(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  responses_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
 }
 BatchMatchResponse_BatchMatchResponsePerIndex::BatchMatchResponse_BatchMatchResponsePerIndex(const BatchMatchResponse_BatchMatchResponsePerIndex& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       responses_(from.responses_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  deployed_index_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.deployed_index_id().size() > 0) {
-    deployed_index_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.deployed_index_id_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  deployed_index_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_deployed_index_id().empty()) {
+    deployed_index_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_deployed_index_id(), 
+      GetArena());
   }
-  if (from.has_status()) {
+  if (from._internal_has_status()) {
     status_ = new ::google::rpc::Status(*from.status_);
   } else {
     status_ = nullptr;
@@ -2316,269 +1578,139 @@ BatchMatchResponse_BatchMatchResponsePerIndex::BatchMatchResponse_BatchMatchResp
 }
 
 void BatchMatchResponse_BatchMatchResponsePerIndex::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_BatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto.base);
-  deployed_index_id_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  status_ = nullptr;
+deployed_index_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+status_ = nullptr;
 }
 
 BatchMatchResponse_BatchMatchResponsePerIndex::~BatchMatchResponse_BatchMatchResponsePerIndex() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void BatchMatchResponse_BatchMatchResponsePerIndex::SharedDtor() {
-  deployed_index_id_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  deployed_index_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete status_;
 }
 
+void BatchMatchResponse_BatchMatchResponsePerIndex::ArenaDtor(void* object) {
+  BatchMatchResponse_BatchMatchResponsePerIndex* _this = reinterpret_cast< BatchMatchResponse_BatchMatchResponsePerIndex* >(object);
+  (void)_this;
+}
+void BatchMatchResponse_BatchMatchResponsePerIndex::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void BatchMatchResponse_BatchMatchResponsePerIndex::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const BatchMatchResponse_BatchMatchResponsePerIndex& BatchMatchResponse_BatchMatchResponsePerIndex::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_BatchMatchResponse_BatchMatchResponsePerIndex_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void BatchMatchResponse_BatchMatchResponsePerIndex::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   responses_.Clear();
-  deployed_index_id_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (GetArenaNoVirtual() == nullptr && status_ != nullptr) {
+  deployed_index_id_.ClearToEmpty();
+  if (GetArena() == nullptr && status_ != nullptr) {
     delete status_;
   }
   status_ = nullptr;
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* BatchMatchResponse_BatchMatchResponsePerIndex::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<BatchMatchResponse_BatchMatchResponsePerIndex*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* BatchMatchResponse_BatchMatchResponsePerIndex::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string deployed_index_id = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex.deployed_index_id");
-        object = msg->mutable_deployed_index_id();
-        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-          goto string_till_end;
-        }
-        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-        ptr += size;
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_deployed_index_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex.deployed_index_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse responses = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::cloud::aiplatform::container::v1beta1::MatchResponse::_InternalParse;
-          object = msg->add_responses();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
-        break;
-      }
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_responses(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // .google.rpc.Status status = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        parser_till_end = ::google::rpc::Status::_InternalParse;
-        object = msg->mutable_status();
-        if (size > end - ptr) goto len_delim_till_end;
-        ptr += size;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-            {parser_till_end, object}, ptr - size, ptr));
-        break;
-      }
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_status(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-string_till_end:
-  static_cast<::std::string*>(object)->clear();
-  static_cast<::std::string*>(object)->reserve(size);
-  goto len_delim_till_end;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool BatchMatchResponse_BatchMatchResponsePerIndex::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string deployed_index_id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_deployed_index_id()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex.deployed_index_id"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse responses = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_responses()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .google.rpc.Status status = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_status()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void BatchMatchResponse_BatchMatchResponsePerIndex::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string deployed_index_id = 1;
-  if (this->deployed_index_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex.deployed_index_id");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->deployed_index_id(), output);
-  }
-
-  // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse responses = 2;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->responses_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2,
-      this->responses(static_cast<int>(i)),
-      output);
-  }
-
-  // .google.rpc.Status status = 3;
-  if (this->has_status()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, HasBitSetters::status(this), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* BatchMatchResponse_BatchMatchResponsePerIndex::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* BatchMatchResponse_BatchMatchResponsePerIndex::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string deployed_index_id = 1;
   if (this->deployed_index_id().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deployed_index_id().data(), static_cast<int>(this->deployed_index_id().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_deployed_index_id().data(), static_cast<int>(this->_internal_deployed_index_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex.deployed_index_id");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->deployed_index_id(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_deployed_index_id(), target);
   }
 
   // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse responses = 2;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->responses_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        2, this->responses(static_cast<int>(i)), target);
+      n = static_cast<unsigned int>(this->_internal_responses_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_responses(i), target, stream);
   }
 
   // .google.rpc.Status status = 3;
   if (this->has_status()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        3, HasBitSetters::status(this), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::status(this), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
   return target;
@@ -2588,54 +1720,49 @@ size_t BatchMatchResponse_BatchMatchResponsePerIndex::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.MatchResponse responses = 2;
-  {
-    unsigned int count = static_cast<unsigned int>(this->responses_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->responses(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_responses_size();
+  for (const auto& msg : this->responses_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string deployed_index_id = 1;
   if (this->deployed_index_id().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->deployed_index_id());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_deployed_index_id());
   }
 
   // .google.rpc.Status status = 3;
   if (this->has_status()) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *status_);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void BatchMatchResponse_BatchMatchResponsePerIndex::MergeFrom(const ::google::protobuf::Message& from) {
+void BatchMatchResponse_BatchMatchResponsePerIndex::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
   GOOGLE_DCHECK_NE(&from, this);
   const BatchMatchResponse_BatchMatchResponsePerIndex* source =
-      ::google::protobuf::DynamicCastToGenerated<BatchMatchResponse_BatchMatchResponsePerIndex>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BatchMatchResponse_BatchMatchResponsePerIndex>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
     MergeFrom(*source);
@@ -2645,21 +1772,20 @@ void BatchMatchResponse_BatchMatchResponsePerIndex::MergeFrom(const ::google::pr
 void BatchMatchResponse_BatchMatchResponsePerIndex::MergeFrom(const BatchMatchResponse_BatchMatchResponsePerIndex& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   responses_.MergeFrom(from.responses_);
   if (from.deployed_index_id().size() > 0) {
-
-    deployed_index_id_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.deployed_index_id_);
+    _internal_set_deployed_index_id(from._internal_deployed_index_id());
   }
   if (from.has_status()) {
-    mutable_status()->::google::rpc::Status::MergeFrom(from.status());
+    _internal_mutable_status()->::google::rpc::Status::MergeFrom(from._internal_status());
   }
 }
 
-void BatchMatchResponse_BatchMatchResponsePerIndex::CopyFrom(const ::google::protobuf::Message& from) {
+void BatchMatchResponse_BatchMatchResponsePerIndex::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex)
   if (&from == this) return;
   Clear();
@@ -2677,212 +1803,130 @@ bool BatchMatchResponse_BatchMatchResponsePerIndex::IsInitialized() const {
   return true;
 }
 
-void BatchMatchResponse_BatchMatchResponsePerIndex::Swap(BatchMatchResponse_BatchMatchResponsePerIndex* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BatchMatchResponse_BatchMatchResponsePerIndex::InternalSwap(BatchMatchResponse_BatchMatchResponsePerIndex* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&responses_)->InternalSwap(CastToBase(&other->responses_));
-  deployed_index_id_.Swap(&other->deployed_index_id_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  responses_.InternalSwap(&other->responses_);
+  deployed_index_id_.Swap(&other->deployed_index_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(status_, other->status_);
 }
 
-::google::protobuf::Metadata BatchMatchResponse_BatchMatchResponsePerIndex::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata BatchMatchResponse_BatchMatchResponsePerIndex::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void BatchMatchResponse::InitAsDefaultInstance() {
-}
-class BatchMatchResponse::HasBitSetters {
+class BatchMatchResponse::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BatchMatchResponse::kResponsesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-BatchMatchResponse::BatchMatchResponse()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+BatchMatchResponse::BatchMatchResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  responses_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
 }
 BatchMatchResponse::BatchMatchResponse(const BatchMatchResponse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       responses_(from.responses_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
 }
 
 void BatchMatchResponse::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_BatchMatchResponse_match_5fservice_2eproto.base);
 }
 
 BatchMatchResponse::~BatchMatchResponse() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void BatchMatchResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
 }
 
+void BatchMatchResponse::ArenaDtor(void* object) {
+  BatchMatchResponse* _this = reinterpret_cast< BatchMatchResponse* >(object);
+  (void)_this;
+}
+void BatchMatchResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void BatchMatchResponse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const BatchMatchResponse& BatchMatchResponse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_BatchMatchResponse_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void BatchMatchResponse::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   responses_.Clear();
-  _internal_metadata_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* BatchMatchResponse::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<BatchMatchResponse*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* BatchMatchResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex responses = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex::_InternalParse;
-          object = msg->add_responses();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_responses(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool BatchMatchResponse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex responses = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_responses()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void BatchMatchResponse::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex responses = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->responses_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->responses(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* BatchMatchResponse::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* BatchMatchResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex responses = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->responses_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->responses(static_cast<int>(i)), target);
+      n = static_cast<unsigned int>(this->_internal_responses_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_responses(i), target, stream);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
   return target;
@@ -2892,40 +1936,35 @@ size_t BatchMatchResponse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .google.cloud.aiplatform.container.v1beta1.BatchMatchResponse.BatchMatchResponsePerIndex responses = 1;
-  {
-    unsigned int count = static_cast<unsigned int>(this->responses_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->responses(static_cast<int>(i)));
-    }
+  total_size += 1UL * this->_internal_responses_size();
+  for (const auto& msg : this->responses_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void BatchMatchResponse::MergeFrom(const ::google::protobuf::Message& from) {
+void BatchMatchResponse::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
   GOOGLE_DCHECK_NE(&from, this);
   const BatchMatchResponse* source =
-      ::google::protobuf::DynamicCastToGenerated<BatchMatchResponse>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<BatchMatchResponse>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
     MergeFrom(*source);
@@ -2935,14 +1974,14 @@ void BatchMatchResponse::MergeFrom(const ::google::protobuf::Message& from) {
 void BatchMatchResponse::MergeFrom(const BatchMatchResponse& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   responses_.MergeFrom(from.responses_);
 }
 
-void BatchMatchResponse::CopyFrom(const ::google::protobuf::Message& from) {
+void BatchMatchResponse::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.BatchMatchResponse)
   if (&from == this) return;
   Clear();
@@ -2960,342 +1999,186 @@ bool BatchMatchResponse::IsInitialized() const {
   return true;
 }
 
-void BatchMatchResponse::Swap(BatchMatchResponse* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void BatchMatchResponse::InternalSwap(BatchMatchResponse* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  CastToBase(&responses_)->InternalSwap(CastToBase(&other->responses_));
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  responses_.InternalSwap(&other->responses_);
 }
 
-::google::protobuf::Metadata BatchMatchResponse::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata BatchMatchResponse::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
 // ===================================================================
 
-void Namespace::InitAsDefaultInstance() {
-}
-class Namespace::HasBitSetters {
+class Namespace::_Internal {
  public:
 };
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Namespace::kNameFieldNumber;
-const int Namespace::kAllowTokensFieldNumber;
-const int Namespace::kDenyTokensFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Namespace::Namespace()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
+Namespace::Namespace(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  allow_tokens_(arena),
+  deny_tokens_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:google.cloud.aiplatform.container.v1beta1.Namespace)
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:google.cloud.aiplatform.container.v1beta1.Namespace)
 }
 Namespace::Namespace(const Namespace& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
       allow_tokens_(from.allow_tokens_),
       deny_tokens_(from.deny_tokens_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_name().empty()) {
+    name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_name(), 
+      GetArena());
   }
   // @@protoc_insertion_point(copy_constructor:google.cloud.aiplatform.container.v1beta1.Namespace)
 }
 
 void Namespace::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_Namespace_match_5fservice_2eproto.base);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 Namespace::~Namespace() {
   // @@protoc_insertion_point(destructor:google.cloud.aiplatform.container.v1beta1.Namespace)
   SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 void Namespace::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
+void Namespace::ArenaDtor(void* object) {
+  Namespace* _this = reinterpret_cast< Namespace* >(object);
+  (void)_this;
+}
+void Namespace::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
 void Namespace::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Namespace& Namespace::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_Namespace_match_5fservice_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void Namespace::Clear() {
 // @@protoc_insertion_point(message_clear_start:google.cloud.aiplatform.container.v1beta1.Namespace)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   allow_tokens_.Clear();
   deny_tokens_.Clear();
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  _internal_metadata_.Clear();
+  name_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* Namespace::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<Namespace*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+const char* Namespace::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string name = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.Namespace.name");
-        object = msg->mutable_name();
-        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-          goto string_till_end;
-        }
-        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-        ptr += size;
-        break;
-      }
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.Namespace.name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       // repeated string allow_tokens = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.Namespace.allow_tokens");
-          object = msg->add_allow_tokens();
-          if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-            parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-            goto string_till_end;
-          }
-          GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-          ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-          ptr += size;
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
-        break;
-      }
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_allow_tokens();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.Namespace.allow_tokens"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
       // repeated string deny_tokens = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          ctx->extra_parse_data().SetFieldName("google.cloud.aiplatform.container.v1beta1.Namespace.deny_tokens");
-          object = msg->add_deny_tokens();
-          if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-            parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
-            goto string_till_end;
-          }
-          GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
-          ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-          ptr += size;
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 26 && (ptr += 1));
-        break;
-      }
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_deny_tokens();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "google.cloud.aiplatform.container.v1beta1.Namespace.deny_tokens"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
+          ctx->SetLastTag(tag);
+          goto success;
         }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
       }
     }  // switch
   }  // while
-  return ptr;
-string_till_end:
-  static_cast<::std::string*>(object)->clear();
-  static_cast<::std::string*>(object)->reserve(size);
-  goto len_delim_till_end;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool Namespace::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:google.cloud.aiplatform.container.v1beta1.Namespace)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string name = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.Namespace.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated string allow_tokens = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_allow_tokens()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->allow_tokens(this->allow_tokens_size() - 1).data(),
-            static_cast<int>(this->allow_tokens(this->allow_tokens_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.Namespace.allow_tokens"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated string deny_tokens = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_deny_tokens()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->deny_tokens(this->deny_tokens_size() - 1).data(),
-            static_cast<int>(this->deny_tokens(this->deny_tokens_size() - 1).length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "google.cloud.aiplatform.container.v1beta1.Namespace.deny_tokens"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
 success:
-  // @@protoc_insertion_point(parse_success:google.cloud.aiplatform.container.v1beta1.Namespace)
-  return true;
+  return ptr;
 failure:
-  // @@protoc_insertion_point(parse_failure:google.cloud.aiplatform.container.v1beta1.Namespace)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void Namespace::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:google.cloud.aiplatform.container.v1beta1.Namespace)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string name = 1;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.Namespace.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->name(), output);
-  }
-
-  // repeated string allow_tokens = 2;
-  for (int i = 0, n = this->allow_tokens_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->allow_tokens(i).data(), static_cast<int>(this->allow_tokens(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.Namespace.allow_tokens");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->allow_tokens(i), output);
-  }
-
-  // repeated string deny_tokens = 3;
-  for (int i = 0, n = this->deny_tokens_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deny_tokens(i).data(), static_cast<int>(this->deny_tokens(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "google.cloud.aiplatform.container.v1beta1.Namespace.deny_tokens");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->deny_tokens(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:google.cloud.aiplatform.container.v1beta1.Namespace)
+  ptr = nullptr;
+  goto success;
+#undef CHK_
 }
 
-::google::protobuf::uint8* Namespace::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8* Namespace::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:google.cloud.aiplatform.container.v1beta1.Namespace)
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string name = 1;
   if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.Namespace.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->name(), target);
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
 
   // repeated string allow_tokens = 2;
-  for (int i = 0, n = this->allow_tokens_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->allow_tokens(i).data(), static_cast<int>(this->allow_tokens(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_allow_tokens_size(); i < n; i++) {
+    const auto& s = this->_internal_allow_tokens(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.Namespace.allow_tokens");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(2, this->allow_tokens(i), target);
+    target = stream->WriteString(2, s, target);
   }
 
   // repeated string deny_tokens = 3;
-  for (int i = 0, n = this->deny_tokens_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->deny_tokens(i).data(), static_cast<int>(this->deny_tokens(i).length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+  for (int i = 0, n = this->_internal_deny_tokens_size(); i < n; i++) {
+    const auto& s = this->_internal_deny_tokens(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "google.cloud.aiplatform.container.v1beta1.Namespace.deny_tokens");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(3, this->deny_tokens(i), target);
+    target = stream->WriteString(3, s, target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:google.cloud.aiplatform.container.v1beta1.Namespace)
   return target;
@@ -3305,52 +2188,51 @@ size_t Namespace::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:google.cloud.aiplatform.container.v1beta1.Namespace)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string allow_tokens = 2;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->allow_tokens_size());
-  for (int i = 0, n = this->allow_tokens_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->allow_tokens(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(allow_tokens_.size());
+  for (int i = 0, n = allow_tokens_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      allow_tokens_.Get(i));
   }
 
   // repeated string deny_tokens = 3;
   total_size += 1 *
-      ::google::protobuf::internal::FromIntSize(this->deny_tokens_size());
-  for (int i = 0, n = this->deny_tokens_size(); i < n; i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->deny_tokens(i));
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(deny_tokens_.size());
+  for (int i = 0, n = deny_tokens_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      deny_tokens_.Get(i));
   }
 
   // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
   }
 
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void Namespace::MergeFrom(const ::google::protobuf::Message& from) {
+void Namespace::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_merge_from_start:google.cloud.aiplatform.container.v1beta1.Namespace)
   GOOGLE_DCHECK_NE(&from, this);
   const Namespace* source =
-      ::google::protobuf::DynamicCastToGenerated<Namespace>(
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Namespace>(
           &from);
   if (source == nullptr) {
   // @@protoc_insertion_point(generalized_merge_from_cast_fail:google.cloud.aiplatform.container.v1beta1.Namespace)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
   // @@protoc_insertion_point(generalized_merge_from_cast_success:google.cloud.aiplatform.container.v1beta1.Namespace)
     MergeFrom(*source);
@@ -3360,19 +2242,18 @@ void Namespace::MergeFrom(const ::google::protobuf::Message& from) {
 void Namespace::MergeFrom(const Namespace& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:google.cloud.aiplatform.container.v1beta1.Namespace)
   GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   allow_tokens_.MergeFrom(from.allow_tokens_);
   deny_tokens_.MergeFrom(from.deny_tokens_);
   if (from.name().size() > 0) {
-
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+    _internal_set_name(from._internal_name());
   }
 }
 
-void Namespace::CopyFrom(const ::google::protobuf::Message& from) {
+void Namespace::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
 // @@protoc_insertion_point(generalized_copy_from_start:google.cloud.aiplatform.container.v1beta1.Namespace)
   if (&from == this) return;
   Clear();
@@ -3390,22 +2271,16 @@ bool Namespace::IsInitialized() const {
   return true;
 }
 
-void Namespace::Swap(Namespace* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
 void Namespace::InternalSwap(Namespace* other) {
   using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  allow_tokens_.InternalSwap(CastToBase(&other->allow_tokens_));
-  deny_tokens_.InternalSwap(CastToBase(&other->deny_tokens_));
-  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  allow_tokens_.InternalSwap(&other->allow_tokens_);
+  deny_tokens_.InternalSwap(&other->deny_tokens_);
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
 
-::google::protobuf::Metadata Namespace::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_match_5fservice_2eproto);
-  return ::file_level_metadata_match_5fservice_2eproto[kIndexInFileMessages];
+::PROTOBUF_NAMESPACE_ID::Metadata Namespace::GetMetadata() const {
+  return GetMetadataStatic();
 }
 
 
@@ -3415,34 +2290,32 @@ void Namespace::InternalSwap(Namespace* other) {
 }  // namespace aiplatform
 }  // namespace cloud
 }  // namespace google
-namespace google {
-namespace protobuf {
+PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::MatchRequest* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::MatchRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::MatchRequest >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::MatchRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::MatchResponse_Neighbor >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::MatchResponse* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::MatchResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::MatchResponse >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::MatchResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest_BatchMatchRequestPerIndex >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchRequest >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse_BatchMatchResponsePerIndex >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::BatchMatchResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::google::cloud::aiplatform::container::v1beta1::Namespace* Arena::CreateMaybeMessage< ::google::cloud::aiplatform::container::v1beta1::Namespace >(Arena* arena) {
-  return Arena::CreateInternal< ::google::cloud::aiplatform::container::v1beta1::Namespace >(arena);
+  return Arena::CreateMessageInternal< ::google::cloud::aiplatform::container::v1beta1::Namespace >(arena);
 }
-}  // namespace protobuf
-}  // namespace google
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 #include <google/protobuf/port_undef.inc>
