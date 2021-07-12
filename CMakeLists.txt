@@ -36,6 +36,7 @@ set(PYBIND11_FIND_PYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
 
 find_package(Protobuf REQUIRED)
+find_package(gRPC REQUIRED)
 
 include(build_settings.cmake)
 

@@ -31,14 +31,13 @@ GrpcClient::FillBuffer() {
     return _bufused;
 }
 
-bool 
+void
 GrpcClient::Connect()
   {
     printf("in connect\n");
 
     const std::shared_ptr<grpc::Channel> channel (grpc::CreateChannel(_deployedIndexServerIp, grpc::InsecureChannelCredentials()));
     stub = new google::cloud::aiplatform::container::v1beta1::MatchService::Stub(channel);
-    return true;
   }
 
 // ssize_t

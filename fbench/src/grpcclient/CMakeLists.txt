@@ -3,6 +3,9 @@
 vespa_add_library(fbench_grpcclient STATIC
     SOURCES
     grpcclient.cpp
+    match_service.grpc.pb.cc
+    match_service.pb.cc
+    third_party/googleapis/google/rpc/status.pb.cc
     DEPENDS
     fbench_util
     fastos

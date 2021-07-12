@@ -67,9 +67,8 @@ protected:
   /**
    * Connect to gRPC channel and create MatchService stub.
    *
-   * @return success(true)/failure(false)
    **/
-  bool Connect();
+  void Connect();
 
 //   /**
 //    * Read the next line of text from the data stream into 'buf'. If
