@@ -46,7 +46,7 @@ GrpcClient::Fetch(char *content, int contentLen)
         if(token == "[" || token == "]") {
           continue;
         }
-        // printf(token);
+
         request.add_float_val((float)strtod(token,NULL));
 
         token = std::strtok(nullptr, "[,]");
