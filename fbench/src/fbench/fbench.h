@@ -52,7 +52,7 @@ private:
 
     void InitGrpcBenchmark(int numClients, int ignoreCount, int cycle, 
                            const char *datasetFilename, const char *outputPattern,
-                           int byteLimit, int restartLimit, int seconds, bool grpcMode);
+                           int byteLimit, int restartLimit, int maxLineSize, int seconds, bool grpcMode);
     void CreateClients();
     void CreateGrpcClients();
     void StartClients();

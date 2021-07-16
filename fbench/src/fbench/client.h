@@ -75,6 +75,12 @@ struct BaseClientArguments
          **/
         int         _restartLimit;
 
+        /**
+        * Max line size in the input query data. Longer lines than this
+        * will be skipped.
+        **/
+        int         _maxLineSize;
+
         /** Whether we should use POST in requests */
         bool        _usePostMode;
 
@@ -87,7 +93,7 @@ struct BaseClientArguments
                         const char *outputPattern,
                         long cycle, long delay,
                         int ignoreCount, int byteLimit,
-                        int restartLimit, bool postMode, bool grpcMode)
+                        int restartLimit, int maxLineSize, bool postMode, bool grpcMode)
             : _myNum(myNum),
             _totNum(totNum),
             _filenamePattern(filenamePattern),
@@ -97,6 +103,7 @@ struct BaseClientArguments
             _ignoreCount(ignoreCount),
             _byteLimit(byteLimit),
             _restartLimit(restartLimit),
+            _maxLineSize(maxLineSize),
             _usePostMode(postMode),
             _useGrpcMode(grpcMode)
         {
@@ -112,7 +119,7 @@ private:
  * Each client runs in a separate thread. This struct do not own the
  * strings it references.
  **/
-struct ClientArguments : BaseClientArguments
+struct ClientArguments : public BaseClientArguments
 {
     /**
      * The server the client should fetch urls from.
@@ -123,12 +130,7 @@ struct ClientArguments : BaseClientArguments
      * The server port where the webserver is running.
      **/
     int         _port;      
-    
-    /**
-     * Max line size in the input query data. Longer lines than this
-     * will be skipped.
-     **/
-    int         _maxLineSize;
+
 
     /**
      * Indicate wether keep-alive connections should be enabled for this
@@ -168,10 +170,9 @@ struct ClientArguments : BaseClientArguments
                     const std::string &authority, bool postMode, bool grpcMode)
         :  BaseClientArguments(myNum, totNum, filenamePattern,
         outputPattern, cycle, delay, ignoreCount, byteLimit, 
-        restartLimit, postMode, grpcMode),
+        restartLimit, maxLineSize, postMode, grpcMode),
         _hostname(hostname),
           _port(port),
-          _maxLineSize(maxLineSize),
           _keepAlive(keepAlive),
           _base64Decode(base64Decode),
           _headerBenchmarkdataCoverage(headerBenchmarkdataCoverage),
@@ -194,7 +195,7 @@ private:
  * Each client runs in a separate thread. This struct do not own the
  * strings it references.
  **/
-struct GrpcClientArguments : BaseClientArguments
+struct GrpcClientArguments : public BaseClientArguments
 {
     /**
      * The IP address of the server that contains the index we are searching in.
@@ -212,10 +213,10 @@ struct GrpcClientArguments : BaseClientArguments
                     long cycle, long delay,
                     int ignoreCount, int byteLimit,
                     int restartLimit, const char *deployedIndexServerIp, 
-                    const char *deployedIndexId, bool postMode, bool grpcMode)
+                    const char *deployedIndexId, int maxLineSize, bool postMode, bool grpcMode)
         :  BaseClientArguments(myNum, totNum, filenamePattern,
         outputPattern, cycle, delay, ignoreCount, byteLimit, 
-        restartLimit, postMode, grpcMode),
+        restartLimit, maxLineSize, postMode, grpcMode),
         _deployedIndexServerIp(deployedIndexServerIp),
         _deployedIndexId(deployedIndexId)
     {
@@ -242,7 +243,7 @@ struct ClientStatus;
 class Client
 {
 private:
-    std::unique_ptr<ClientArguments> _args;
+    std::unique_ptr<ClientArguments> _httpArgs;
     std::unique_ptr<GrpcClientArguments> _grpcArgs;
     std::unique_ptr<ClientStatus>    _status;
     std::unique_ptr<Timer>           _reqTimer;
@@ -262,6 +263,8 @@ private:
     Client &operator=(const Client &);
     static void runMe(Client * client);
     void run();
+    void runGrpc();
+    void runHttp();
 
 public:
     typedef std::unique_ptr<Client> UP;
