@@ -8,4 +8,5 @@ vespa_add_executable(fbench_app
     DEPENDS
     fbench_util
     fbench_httpclient
+    fbench_grpcclient
 )
