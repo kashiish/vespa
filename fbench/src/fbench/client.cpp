@@ -347,10 +347,8 @@ Client::runGrpc()
         // Update current time span to calculate Q/s
         _status->SetRealTime(_masterTimer->GetCurrent());
     }
-    printf("out of while loop.\n");
     _masterTimer->Stop();
     _status->SetRealTime(_masterTimer->GetTimespan());
-    printf("set status stuff\n");
 
 }
 
@@ -508,9 +506,7 @@ bool Client::done() {
 }
 
 void Client::start() {
-    printf("inside client start\n");
     _thread = std::thread(Client::runMe, this);
-    printf("client started\n");
 }
 
 void Client::join() {
