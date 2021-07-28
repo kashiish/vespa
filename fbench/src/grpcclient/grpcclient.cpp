@@ -42,14 +42,14 @@ GrpcClient::Fetch(char *content, int contentLen)
 
     char *token = std::strtok(content, "[,]");
 
-     while (token) {
-        if(token == "[" || token == "]") {
-          continue;
-        }
+    while (token) {
+      if(token == "[" || token == "]") {
+        continue;
+      }
 
-        request.add_float_val((float)strtod(token,NULL));
+      request.add_float_val((float)strtod(token,NULL));
 
-        token = std::strtok(nullptr, "[,]");
+      token = std::strtok(nullptr, "[,]");
     }
 
     ::google::cloud::aiplatform::container::v1beta1::MatchResponse response;
