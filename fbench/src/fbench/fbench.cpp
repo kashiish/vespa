@@ -294,7 +294,7 @@ FBench::PrintSummary()
     actualRate = (status._realTime > 0) ?
                  realNumClients * 1000.0 * status._requestCnt / status._realTime : 0;
 
-    if (_keepAlive) {
+    if (!_useGrpcMode && _keepAlive) {
         printf("*** HTTP keep-alive statistics ***\n");
         printf("connection reuse count -- %" PRIu64 "\n", status._reuseCnt);
     }

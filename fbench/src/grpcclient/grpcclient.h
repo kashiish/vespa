@@ -65,7 +65,7 @@ public:
     /**
     * Disconnect from server and free memory.
     **/
-    // ~GrpcClient();
+    ~GrpcClient();
 
   /**
    * Class that provides status about the executed fetch method.
