@@ -12,30 +12,30 @@ class FBench
 private:
     vespalib::CryptoEngine::SP _crypto_engine;
     std::vector<Client::UP> _clients;
-    int                 _numClients;
-    int                 _ignoreCount;
-    int                 _cycle;
+    int _numClients;
+    int _ignoreCount;
+    int _cycle;
     std::vector<std::string> _hostnames;
-    std::vector<int>    _ports;
-    char               *_filenamePattern;
-    char               *_outputPattern;
-    int                 _byteLimit;
-    int                 _restartLimit;
-    int                 _maxLineSize;
-    bool                _keepAlive;
-    bool                _base64Decode;
-    bool                _usePostMode;
-    bool                _useGrpcMode;
-    char                *_deployedIndexServerIp;
-    char                *_deployedIndexId;
-    bool                _headerBenchmarkdataCoverage;
-    int                 _seconds;
+    std::vector<int> _ports;
+    char *_filenamePattern;
+    char *_outputPattern;
+    int _byteLimit;
+    int _restartLimit;
+    int _maxLineSize;
+    bool _keepAlive;
+    bool _base64Decode;
+    bool _usePostMode;
+    bool _useGrpcMode;
+    char *_deployedIndexServerIp;
+    char *_deployedIndexId;
+    bool _headerBenchmarkdataCoverage;
+    int _seconds;
     std::vector<uint64_t> _queryfileOffset;
-    int                 _numberOfQueries;
-    bool                _singleQueryFile;
-    std::string         _queryStringToAppend;
-    std::string         _extraHeaders;
-    std::string         _authority;
+    int _numberOfQueries;
+    bool _singleQueryFile;
+    std::string _queryStringToAppend;
+    std::string _extraHeaders;
+    std::string _authority;
 
     bool init_crypto_engine(const std::string &ca_certs_file_name,
                             const std::string &cert_chain_file_name,
@@ -47,10 +47,10 @@ private:
                        int byteLimit, int restartLimit, int maxLineSize,
                        bool keepAlive, bool base64Decode,
                        bool headerBenchmarkdataCoverage, int seconds,
-                       bool singleQueryFile, const std::string & queryStringToAppend, const std::string & extraHeaders,
+                       bool singleQueryFile, const std::string &queryStringToAppend, const std::string &extraHeaders,
                        const std::string &authority, bool postMode, bool grpcMode);
 
-    void InitGrpcBenchmark(int numClients, int ignoreCount, int cycle, 
+    void InitGrpcBenchmark(int numClients, int ignoreCount, int cycle,
                            const char *datasetFilename, const char *outputPattern,
                            int byteLimit, int restartLimit, int maxLineSize, int seconds, bool grpcMode);
     void CreateClients();
@@ -83,4 +83,4 @@ public:
     int Main(int argc, char *argv[]);
 };
 
-int main(int argc, char** argv);
+int main(int argc, char **argv);

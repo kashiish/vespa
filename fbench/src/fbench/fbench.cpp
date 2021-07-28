@@ -18,21 +18,27 @@
 #include <cinttypes>
 #include <cstdlib>
 
-namespace {
+namespace
+{
 
-std::string maybe_load(const std::string &file_name, bool &failed) {
-    std::string content;
-    if (!file_name.empty()) {
-        vespalib::MappedFileInput file(file_name);
-        if (file.valid()) {
-            content = std::string(file.get().data, file.get().size);
-        } else {
-            fprintf(stderr, "could not load file: '%s'\n", file_name.c_str());
-            failed = true;
+    std::string maybe_load(const std::string &file_name, bool &failed)
+    {
+        std::string content;
+        if (!file_name.empty())
+        {
+            vespalib::MappedFileInput file(file_name);
+            if (file.valid())
+            {
+                content = std::string(file.get().data, file.get().size);
+            }
+            else
+            {
+                fprintf(stderr, "could not load file: '%s'\n", file_name.c_str());
+                failed = true;
+            }
         }
+        return content;
     }
-    return content;
-}
 
 }
 
@@ -64,225 +70,237 @@ FBench::~FBench()
     free(_outputPattern);
 }
 
-bool
-FBench::init_crypto_engine(const std::string &ca_certs_file_name,
-                           const std::string &cert_chain_file_name,
-                           const std::string &private_key_file_name,
-                           bool allow_default_tls)
+bool FBench::init_crypto_engine(const std::string &ca_certs_file_name,
+                                const std::string &cert_chain_file_name,
+                                const std::string &private_key_file_name,
+                                bool allow_default_tls)
 {
     if (ca_certs_file_name.empty() &&
         cert_chain_file_name.empty() &&
         private_key_file_name.empty())
     {
-        if (allow_default_tls) {
+        if (allow_default_tls)
+        {
             _crypto_engine = vespalib::CryptoEngine::get_default();
-        } else {
+        }
+        else
+        {
             _crypto_engine = std::make_shared<vespalib::NullCryptoEngine>();
         }
         return true;
     }
-    if (ca_certs_file_name.empty()) {
+    if (ca_certs_file_name.empty())
+    {
         fprintf(stderr, "CA certificate required; specify with -T\n");
         return false;
     }
-    if (cert_chain_file_name.empty() != private_key_file_name.empty()) {
+    if (cert_chain_file_name.empty() != private_key_file_name.empty())
+    {
         fprintf(stderr, "both client certificate AND client private key required; specify with -C and -K\n");
         return false;
     }
     bool load_failed = false;
-    auto ts_builder = vespalib::net::tls::TransportSecurityOptions::Params().
-            ca_certs_pem(maybe_load(ca_certs_file_name, load_failed)).
-            cert_chain_pem(maybe_load(cert_chain_file_name, load_failed)).
-            private_key_pem(maybe_load(private_key_file_name, load_failed)).
-            authorized_peers(vespalib::net::tls::AuthorizedPeers::allow_all_authenticated()).
-            disable_hostname_validation(true); // TODO configurable or default false!
+    auto ts_builder = vespalib::net::tls::TransportSecurityOptions::Params().ca_certs_pem(maybe_load(ca_certs_file_name, load_failed)).cert_chain_pem(maybe_load(cert_chain_file_name, load_failed)).private_key_pem(maybe_load(private_key_file_name, load_failed)).authorized_peers(vespalib::net::tls::AuthorizedPeers::allow_all_authenticated()).disable_hostname_validation(true); // TODO configurable or default false!
     vespalib::net::tls::TransportSecurityOptions tls_opts(std::move(ts_builder));
-    if (load_failed) {
+    if (load_failed)
+    {
         fprintf(stderr, "failed to load transport security options\n");
         return false;
     }
-    try {
+    try
+    {
         _crypto_engine = std::make_shared<vespalib::TlsCryptoEngine>(tls_opts);
-    } catch (vespalib::crypto::CryptoException &e) {
+    }
+    catch (vespalib::crypto::CryptoException &e)
+    {
         fprintf(stderr, "%s\n", e.what());
         return false;
     }
     return true;
 }
 
-void
-FBench::InitBenchmark(int numClients, int ignoreCount, int cycle,
-                      const char *filenamePattern, const char *outputPattern,
-                      int byteLimit, int restartLimit, int maxLineSize,
-                      bool keepAlive, bool base64Decode,
-                      bool headerBenchmarkdataCoverage, int seconds,
-                      bool singleQueryFile, const std::string & queryStringToAppend, const std::string & extraHeaders,
-                      const std::string &authority, bool postMode, bool grpcMode)
+void FBench::InitBenchmark(int numClients, int ignoreCount, int cycle,
+                           const char *filenamePattern, const char *outputPattern,
+                           int byteLimit, int restartLimit, int maxLineSize,
+                           bool keepAlive, bool base64Decode,
+                           bool headerBenchmarkdataCoverage, int seconds,
+                           bool singleQueryFile, const std::string &queryStringToAppend, const std::string &extraHeaders,
+                           const std::string &authority, bool postMode, bool grpcMode)
 {
     _clients.resize(numClients);
-    _ignoreCount     = ignoreCount;
-    _cycle           = cycle;
+    _ignoreCount = ignoreCount;
+    _cycle = cycle;
 
     free(_filenamePattern);
     _filenamePattern = strdup(filenamePattern);
     free(_outputPattern);
-    _outputPattern   = (outputPattern == NULL) ?
-                       NULL : strdup(outputPattern);
+    _outputPattern = (outputPattern == NULL) ? NULL : strdup(outputPattern);
     _queryStringToAppend = queryStringToAppend;
-    _extraHeaders    = extraHeaders;
-    _authority       = authority;
-    _byteLimit       = byteLimit;
-    _restartLimit    = restartLimit;
-    _maxLineSize     = maxLineSize;
-    _keepAlive       = keepAlive;
-    _base64Decode    = base64Decode;
-    _usePostMode     = postMode;
-    _useGrpcMode     = grpcMode;
+    _extraHeaders = extraHeaders;
+    _authority = authority;
+    _byteLimit = byteLimit;
+    _restartLimit = restartLimit;
+    _maxLineSize = maxLineSize;
+    _keepAlive = keepAlive;
+    _base64Decode = base64Decode;
+    _usePostMode = postMode;
+    _useGrpcMode = grpcMode;
     _headerBenchmarkdataCoverage = headerBenchmarkdataCoverage;
     _seconds = seconds;
     _singleQueryFile = singleQueryFile;
 }
 
-void
-FBench::InitGrpcBenchmark(int numClients, int ignoreCount, int cycle, 
-                           const char *datasetFilename, const char *outputPattern,
-                           int byteLimit, int restartLimit, int maxLineSize, int seconds, 
-                           bool grpcMode)
+void FBench::InitGrpcBenchmark(int numClients, int ignoreCount, int cycle,
+                               const char *datasetFilename, const char *outputPattern,
+                               int byteLimit, int restartLimit, int maxLineSize, int seconds,
+                               bool grpcMode)
 {
 
     _clients.resize(numClients);
-    _ignoreCount     = ignoreCount;
-    _cycle           = cycle;
+    _ignoreCount = ignoreCount;
+    _cycle = cycle;
     free(_filenamePattern);
     _filenamePattern = strdup(datasetFilename);
     free(_outputPattern);
 
-    _outputPattern   = (outputPattern == NULL) ?
-                       NULL : strdup(outputPattern);
+    _outputPattern = (outputPattern == NULL) ? NULL : strdup(outputPattern);
 
-    _byteLimit       = byteLimit;
-    _restartLimit    = restartLimit;
-    _maxLineSize     = maxLineSize;
-    _useGrpcMode     = grpcMode;
+    _byteLimit = byteLimit;
+    _restartLimit = restartLimit;
+    _maxLineSize = maxLineSize;
+    _useGrpcMode = grpcMode;
     _seconds = seconds;
 }
 
-void
-FBench::CreateClients()
+void FBench::CreateClients()
 {
     int spread = (_cycle > 1) ? _cycle : 1;
 
     int i(0);
-    for(auto & client : _clients) {
+    for (auto &client : _clients)
+    {
         uint64_t off_beg = 0;
         uint64_t off_end = 0;
-        if (_singleQueryFile) {
+        if (_singleQueryFile)
+        {
             off_beg = _queryfileOffset[i];
-            off_end = _queryfileOffset[i+1];
+            off_end = _queryfileOffset[i + 1];
         }
         client = std::make_unique<Client>(_crypto_engine,
-            new ClientArguments(i, _clients.size(), _filenamePattern,
-                                _outputPattern, _hostnames[i % _hostnames.size()].c_str(),
-                                _ports[i % _ports.size()], _cycle,
-                                random() % spread, _ignoreCount,
-                                _byteLimit, _restartLimit, _maxLineSize,
-                                _keepAlive, _base64Decode,
-                                _headerBenchmarkdataCoverage,
-                                off_beg, off_end,
-                                _singleQueryFile, _queryStringToAppend, _extraHeaders, _authority, _usePostMode, _useGrpcMode));
+                                          new ClientArguments(i, _clients.size(), _filenamePattern,
+                                                              _outputPattern, _hostnames[i % _hostnames.size()].c_str(),
+                                                              _ports[i % _ports.size()], _cycle,
+                                                              random() % spread, _ignoreCount,
+                                                              _byteLimit, _restartLimit, _maxLineSize,
+                                                              _keepAlive, _base64Decode,
+                                                              _headerBenchmarkdataCoverage,
+                                                              off_beg, off_end,
+                                                              _singleQueryFile, _queryStringToAppend, _extraHeaders, _authority, _usePostMode, _useGrpcMode));
         ++i;
     }
 }
 
-void
-FBench::CreateGrpcClients() {
+void FBench::CreateGrpcClients()
+{
     int spread = (_cycle > 1) ? _cycle : 1;
 
     int i(0);
-    for(auto & client : _clients) {
+    for (auto &client : _clients)
+    {
 
         client = std::make_unique<Client>(new GrpcClientArguments(i, _clients.size(), _filenamePattern,
-                                _outputPattern, _cycle,
-                                random() % spread, _ignoreCount,
-                                _byteLimit, _restartLimit, _deployedIndexServerIp, 
-                                _deployedIndexId, _maxLineSize, _usePostMode, _useGrpcMode));
+                                                                  _outputPattern, _cycle,
+                                                                  random() % spread, _ignoreCount,
+                                                                  _byteLimit, _restartLimit, _deployedIndexServerIp,
+                                                                  _deployedIndexId, _maxLineSize, _usePostMode, _useGrpcMode));
         ++i;
     }
 }
 
-bool
-FBench::ClientsDone()
+bool FBench::ClientsDone()
 {
     bool done(true);
-    for (auto & client : _clients) {
-        if ( ! client->done() ) {
+    for (auto &client : _clients)
+    {
+        if (!client->done())
+        {
             return false;
         }
     }
     return done;
 }
 
-void
-FBench::StartClients()
+void FBench::StartClients()
 {
     printf("Starting clients...\n");
-    for (auto & client : _clients) {
+    for (auto &client : _clients)
+    {
         client->start();
     }
 }
 
-void
-FBench::StopClients()
+void FBench::StopClients()
 {
     printf("Stopping clients");
-    for (auto & client : _clients) {
+    for (auto &client : _clients)
+    {
         client->stop();
     }
     printf("\nClients stopped.\n");
-    for (auto & client : _clients) {
+    for (auto &client : _clients)
+    {
         client->join();
     }
     printf("\nClients Joined.\n");
 }
 
-namespace {
+namespace
+{
 
-const char *
-approx(double latency, const ClientStatus & status) {
-    return (latency > (status._timetable.size() / status._timetableResolution - 1))
-           ? "ms (approx)"
-           : "ms";
-}
-
-std::string
-fmtPercentile(double percentile) {
-    char buf[32];
-    if (percentile <= 99.0) {
-        snprintf(buf, sizeof(buf), "%2d  ", int(percentile));
-    } else {
-        snprintf(buf, sizeof(buf), "%2.1f", percentile);
+    const char *
+    approx(double latency, const ClientStatus &status)
+    {
+        return (latency > (status._timetable.size() / status._timetableResolution - 1))
+                   ? "ms (approx)"
+                   : "ms";
     }
-    return buf;
-}
+
+    std::string
+    fmtPercentile(double percentile)
+    {
+        char buf[32];
+        if (percentile <= 99.0)
+        {
+            snprintf(buf, sizeof(buf), "%2d  ", int(percentile));
+        }
+        else
+        {
+            snprintf(buf, sizeof(buf), "%2.1f", percentile);
+        }
+        return buf;
+    }
 
 }
 
-void
-FBench::PrintSummary()
+void FBench::PrintSummary()
 {
     ClientStatus status;
 
-    double maxRate    = 0;
+    double maxRate = 0;
     double actualRate = 0;
 
     int realNumClients = 0;
-    
+
     int i = 0;
-    for (auto & client : _clients) {
-        if (client->GetStatus()._error) {
+    for (auto &client : _clients)
+    {
+        if (client->GetStatus()._error)
+        {
             printf("Client %d: %s => discarding client results.\n",
                    i, client->GetStatus()._errorMsg.c_str());
-        } else {
+        }
+        else
+        {
             status.Merge(client->GetStatus());
             ++realNumClients;
         }
@@ -291,10 +309,10 @@ FBench::PrintSummary()
     double avg = status.GetAverage();
 
     maxRate = (avg > 0) ? realNumClients * 1000.0 / avg : 0;
-    actualRate = (status._realTime > 0) ?
-                 realNumClients * 1000.0 * status._requestCnt / status._realTime : 0;
+    actualRate = (status._realTime > 0) ? realNumClients * 1000.0 * status._requestCnt / status._realTime : 0;
 
-    if (!_useGrpcMode && _keepAlive) {
+    if (!_useGrpcMode && _keepAlive)
+    {
         printf("*** HTTP keep-alive statistics ***\n");
         printf("connection reuse count -- %" PRIu64 "\n", status._reuseCnt);
     }
@@ -311,7 +329,8 @@ FBench::PrintSummary()
     printf("maximum response time:  %8.2f ms\n", status._maxTime);
     printf("average response time:  %8.2f ms\n", status.GetAverage());
 
-    for (double percentile : {25.0, 50.0, 75.0, 90.0, 95.0, 98.0, 99.0, 99.5, 99.6, 99.7, 99.8, 99.9}) {
+    for (double percentile : {25.0, 50.0, 75.0, 90.0, 95.0, 98.0, 99.0, 99.5, 99.6, 99.7, 99.8, 99.9})
+    {
         double latency = status.GetPercentile(percentile);
         printf("%s percentile:          %8.2f %s\n",
                fmtPercentile(percentile).c_str(), latency, approx(latency, status));
@@ -322,14 +341,13 @@ FBench::PrintSummary()
            (maxRate > 0) ? 100 * (actualRate / maxRate) : 0);
     printf("zero hit queries:       %8ld\n", status._zeroHitQueries);
     printf("http request status breakdown:\n");
-    for (const auto& entry : status._requestStatusDistribution)
+    for (const auto &entry : status._requestStatusDistribution)
         printf("  %8u : %8u \n", entry.first, entry.second);
-    
+
     fflush(stdout);
 }
 
-void
-FBench::Usage()
+void FBench::Usage()
 {
     printf("usage: vespa-fbench [-H extraHeader] [-a queryStringToAppend ] [-n numClients] [-c cycleTime] [-l limit] [-i ignoreCount]\n");
     printf("              [-s seconds] [-q queryFilePattern] [-o outputFilePattern]\n");
@@ -370,8 +388,7 @@ FBench::Usage()
     printf("This is distributed in round-robin manner to clients\n");
 }
 
-void
-FBench::Exit()
+void FBench::Exit()
 {
     StopClients();
     printf("\n");
@@ -379,29 +396,28 @@ FBench::Exit()
     std::_Exit(0);
 }
 
-int
-FBench::Main(int argc, char *argv[])
+int FBench::Main(int argc, char *argv[])
 {
     // parameters with default values.
-    int numClients  = 10;
-    int cycleTime   = 1000;
-    int byteLimit   = 0;
+    int numClients = 10;
+    int cycleTime = 1000;
+    int byteLimit = 0;
     int ignoreCount = 0;
-    int seconds     = 60;
+    int seconds = 60;
     int maxLineSize = 128_Ki;
     const int minLineSize = 1024;
 
-    const char *queryFilePattern  = "query%03d.txt";
+    const char *queryFilePattern = "query%03d.txt";
     const char *outputFilePattern = NULL;
     std::string queryStringToAppend;
     std::string extraHeaders;
-    std::string ca_certs_file_name; // -T
-    std::string cert_chain_file_name; // -C
+    std::string ca_certs_file_name;    // -T
+    std::string cert_chain_file_name;  // -C
     std::string private_key_file_name; // -K
-    bool allow_default_tls = false; // -D
+    bool allow_default_tls = false;    // -D
 
-    int  restartLimit = -1;
-    bool keepAlive    = true;
+    int restartLimit = -1;
+    bool keepAlive = true;
     bool base64Decode = false;
     bool headerBenchmarkdataCoverage = false;
     bool usePostMode = false;
@@ -410,24 +426,27 @@ FBench::Main(int argc, char *argv[])
     bool singleQueryFile = false;
     std::string authority;
 
-    int  printInterval = 0;
+    int printInterval = 0;
 
     // parse options and override defaults.
-    int         idx;
-    int         opt;
+    int idx;
+    int opt;
     const char *arg;
-    bool        optError;
+    bool optError;
 
     idx = 1;
     optError = false;
-    while((opt = GetOpt(argc, argv, "H:A:T:C:K:Da:n:c:l:i:s:q:o:r:m:p:kdxyzPG", arg, idx)) != -1) {
-        switch(opt) {
+    while ((opt = GetOpt(argc, argv, "H:A:T:C:K:Da:n:c:l:i:s:q:o:r:m:p:kdxyzPG", arg, idx)) != -1)
+    {
+        switch (opt)
+        {
         case 'A':
             authority = arg;
             break;
         case 'H':
             extraHeaders += std::string(arg) + "\r\n";
-            if (strncmp(arg, "Host:", 5) == 0) {
+            if (strncmp(arg, "Host:", 5) == 0)
+            {
                 fprintf(stderr, "Do not override 'Host:' header, use -A option instead\n");
                 return -1;
             }
@@ -441,7 +460,7 @@ FBench::Main(int argc, char *argv[])
         case 'K':
             private_key_file_name = std::string(arg);
             break;
-        
+
         case 'D':
             allow_default_tls = true;
             break;
@@ -474,17 +493,20 @@ FBench::Main(int argc, char *argv[])
             break;
         case 'm':
             maxLineSize = atoi(arg);
-            if (maxLineSize < minLineSize) {
+            if (maxLineSize < minLineSize)
+            {
                 maxLineSize = minLineSize;
             }
             break;
         case 'P':
-            if(!useGrpcMode) {
+            if (!useGrpcMode)
+            {
                 usePostMode = true;
             }
             break;
         case 'G':
-            if(!usePostMode) {
+            if (!usePostMode)
+            {
                 useGrpcMode = true;
             }
             break;
@@ -499,9 +521,9 @@ FBench::Main(int argc, char *argv[])
         case 'd':
             base64Decode = false;
             break;
-        case 'x': 
+        case 'x':
             // consuming x for backwards compability. This turned on header benchmark data
-            // but this is now always on. 
+            // but this is now always on.
             break;
         case 'y':
             headerBenchmarkdataCoverage = true;
@@ -515,53 +537,58 @@ FBench::Main(int argc, char *argv[])
         }
     }
 
-    if ( argc < (idx + 2) || optError) {
+    if (argc < (idx + 2) || optError)
+    {
         Usage();
         return -1;
     }
 
-    if(useGrpcMode) {
+    if (useGrpcMode)
+    {
         int args = (argc - idx);
 
-        if(args < 2) {
+        if (args < 2)
+        {
             fprintf(stderr, "Index server IP address and/or index ID missing.\n");
             return -1;
         }
 
         _deployedIndexServerIp = argv[idx];
-        _deployedIndexId = argv[idx+1];
+        _deployedIndexId = argv[idx + 1];
 
-
-        InitGrpcBenchmark(numClients, ignoreCount, cycleTime, 
-                           queryFilePattern, outputFilePattern,
-                           byteLimit, restartLimit, maxLineSize, seconds, 
-                           useGrpcMode);
+        InitGrpcBenchmark(numClients, ignoreCount, cycleTime,
+                          queryFilePattern, outputFilePattern,
+                          byteLimit, restartLimit, maxLineSize, seconds,
+                          useGrpcMode);
 
         CreateGrpcClients();
-
-
-    } else {
+    }
+    else
+    {
 
         // Hostname/port must be in pair
         int args = (argc - idx);
-        if (args % 2 != 0) {
+        if (args % 2 != 0)
+        {
             fprintf(stderr, "Not equal number of hostnames and ports\n");
             return -1;
         }
 
-        if (!init_crypto_engine(ca_certs_file_name, cert_chain_file_name, private_key_file_name, allow_default_tls)) {
+        if (!init_crypto_engine(ca_certs_file_name, cert_chain_file_name, private_key_file_name, allow_default_tls))
+        {
             fprintf(stderr, "failed to initialize crypto engine\n");
             return -1;
         }
 
         short hosts = args / 2;
 
-        for (int i=0; i<hosts; ++i)
+        for (int i = 0; i < hosts; ++i)
         {
-            _hostnames.push_back(std::string(argv[idx+2*i]));
-            int port = atoi(argv[idx+2*i+1]);
-            if (port == 0) {
-                fprintf(stderr, "Not a valid port:\t%s\n", argv[idx+2*i+1]);
+            _hostnames.push_back(std::string(argv[idx + 2 * i]));
+            int port = atoi(argv[idx + 2 * i + 1]);
+            if (port == 0)
+            {
+                fprintf(stderr, "Not a valid port:\t%s\n", argv[idx + 2 * i + 1]);
                 return -1;
             }
             _ports.push_back(port);
@@ -569,13 +596,15 @@ FBench::Main(int argc, char *argv[])
 
         // Find offset for each client if shared query file
         _queryfileOffset.push_back(0);
-        if (singleQueryFile) {
+        if (singleQueryFile)
+        {
             // Open file to find offsets, with pattern as if client 0
             char filename[1024];
             snprintf(filename, 1024, queryFilePattern, 0);
             queryFilePattern = filename;
             FileReader reader;
-            if (!reader.Open(queryFilePattern)) {
+            if (!reader.Open(queryFilePattern))
+            {
                 fprintf(stderr, "ERROR: could not open file '%s' [read mode]\n",
                         queryFilePattern);
                 return -1;
@@ -584,19 +613,19 @@ FBench::Main(int argc, char *argv[])
             uint64_t totalSize = reader.GetFileSize();
             uint64_t perClient = totalSize / numClients;
 
-            for (int i=1; i<numClients; ++i) {
+            for (int i = 1; i < numClients; ++i)
+            {
                 /** Start each client with some offset, adjusted to next newline
                  **/
                 FileReader r;
                 r.Open(queryFilePattern);
-                uint64_t clientOffset = std::max(i*perClient, _queryfileOffset.back() );
+                uint64_t clientOffset = std::max(i * perClient, _queryfileOffset.back());
                 uint64_t newline = r.FindNextLine(clientOffset);
                 _queryfileOffset.push_back(newline);
             }
 
             // Add pos to end of file
             _queryfileOffset.push_back(totalSize);
-
 
             // Print offset of clients
             /*
@@ -607,50 +636,59 @@ FBench::Main(int argc, char *argv[])
         }
 
         InitBenchmark(numClients, ignoreCount, cycleTime,
-                    queryFilePattern, outputFilePattern,
-                    byteLimit, restartLimit, maxLineSize,
-                    keepAlive, base64Decode,
-                    headerBenchmarkdataCoverage, seconds,
-                    singleQueryFile, queryStringToAppend, extraHeaders,
-                    authority, usePostMode, useGrpcMode);
+                      queryFilePattern, outputFilePattern,
+                      byteLimit, restartLimit, maxLineSize,
+                      keepAlive, base64Decode,
+                      headerBenchmarkdataCoverage, seconds,
+                      singleQueryFile, queryStringToAppend, extraHeaders,
+                      authority, usePostMode, useGrpcMode);
 
         CreateClients();
     }
 
     StartClients();
 
-
-    if (seconds < 0) {
+    if (seconds < 0)
+    {
         unsigned int secondCount = 0;
-        while (!ClientsDone()) {
-            if (exitSignal) {
+        while (!ClientsDone())
+        {
+            if (exitSignal)
+            {
                 _seconds = secondCount;
                 Exit();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-            if (printInterval != 0 && ++secondCount % printInterval == 0) {
+            if (printInterval != 0 && ++secondCount % printInterval == 0)
+            {
                 printf("\nRuntime: %d sec\n", secondCount);
                 PrintSummary();
             }
         }
-    } else if (seconds > 0) {
+    }
+    else if (seconds > 0)
+    {
         // Timer to compansate for work load on PrintSummary()
         Timer sleepTimer;
         sleepTimer.SetMax(1000);
 
-        for (;seconds > 0 && !ClientsDone(); seconds--) {
-            if (exitSignal) {
+        for (; seconds > 0 && !ClientsDone(); seconds--)
+        {
+            if (exitSignal)
+            {
                 _seconds = _seconds - seconds;
                 Exit();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(int(sleepTimer.GetRemaining())));
             sleepTimer.Start();
 
-            if (seconds % 60 == 0) {
+            if (seconds % 60 == 0)
+            {
                 printf("[dummydate]: PROGRESS: vespa-fbench: Seconds left %d\n", seconds);
             }
 
-            if (printInterval != 0 && seconds % printInterval == 0) {
+            if (printInterval != 0 && seconds % printInterval == 0)
+            {
                 printf("\nRuntime: %d sec\n", _seconds - seconds);
                 PrintSummary();
             }
@@ -658,7 +696,6 @@ FBench::Main(int argc, char *argv[])
             sleepTimer.Stop();
         }
     }
-
 
     StopClients();
 
@@ -668,13 +705,13 @@ FBench::Main(int argc, char *argv[])
 
 void sighandler(int sig)
 {
-    if (sig == SIGINT) {
+    if (sig == SIGINT)
+    {
         exitSignal = 1;
     }
 }
 
-int
-main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 
     struct sigaction act;
