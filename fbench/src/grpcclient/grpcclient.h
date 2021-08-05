@@ -50,6 +50,13 @@ public:
   void Connect();
 
   /**
+   * Set the number of neighbors to fetch for each query
+   **/
+  void SetNumNeighbors(int num) {
+    _numNeighbors = num;
+  }
+
+  /**
    * Create a gRPC client that may be used to fetch documents from the
    * given host.
    *
@@ -61,7 +68,7 @@ public:
   /**
     * Disconnect from server and free memory.
     **/
-  ~GrpcClient();
+  ~GrpcClient(){};
 
   /**
    * Class that provides status about the executed fetch method.
