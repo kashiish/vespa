@@ -29,3 +29,14 @@ vespa_add_executable(fbench_clientstatus_app TEST
     fastos
 )
 vespa_add_test(NAME fbench_clientstatus_app COMMAND fbench_clientstatus_app)
+
+vespa_add_executable(fbench_grpcclient_app TEST
+    SOURCES
+    grpcclient_test.cpp
+    DEPENDS
+    fbench_util
+    fbench_grpcclient
+    vespalib
+    GTest::GTest
+)
+vespa_add_test(NAME fbench_grpcclient_app COMMAND fbench_grpcclient_app)
